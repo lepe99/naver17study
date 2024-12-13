@@ -15,7 +15,6 @@ public class Ex12For {
 		for(char ch='Z'; ch>='A'; ch--)
 			System.out.print((ch));
 		System.out.println();
-		System.out.println();
 		
 	}
 		
