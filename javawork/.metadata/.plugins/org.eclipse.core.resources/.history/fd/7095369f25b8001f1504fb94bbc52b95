@@ -1,0 +1,14 @@
+package day1212;
+
+public class Ex1Operator {
+
+	public static void main(String[] args) {
+		//증감 연산자, ++변수 (전치, 1순위), 변수++ (후치 : 끝순위)
+		int a, b, m, n; //자바도 다중 선언 가능
+		a = b = 5;
+		m = ++a;//a 증가 후 m 대입
+		n = b++;//n 증가 후 n 대입
+		System.out.printf("a = %d, b = %d, m = %d, n = %d\n", a, b, m ,n);
+	}
+
+}

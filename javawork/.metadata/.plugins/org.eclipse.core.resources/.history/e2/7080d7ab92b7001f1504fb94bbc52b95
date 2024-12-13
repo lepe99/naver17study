@@ -1,0 +1,22 @@
+package boj;
+//2588
+
+import java.util.Scanner;
+public class Boj1a10 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String in1 = sc.nextLine();
+		String in2 = sc.nextLine();
+		sc.close();
+		int val1 = Integer.parseInt(in1);
+		String[] val2 = in2.split("");
+		int val3 = Integer.parseInt(val2[2]);
+		int val4 = Integer.parseInt(val2[1]);
+		int val5 = Integer.parseInt(val2[0]);
+		
+		int ans1 = val1 * val3
+		
+	}
+
+}

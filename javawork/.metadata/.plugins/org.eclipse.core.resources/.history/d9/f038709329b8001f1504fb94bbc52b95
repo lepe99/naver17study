@@ -1,0 +1,17 @@
+package day1212;
+
+public class Ex2Operator {
+
+	public static void main(String[] args) {
+		// 산술 연산자 + - * / %
+		
+		int a = 10;
+		int b = 10;
+		System.out.println(a + b);
+		System.out.println(a - b);
+		System.out.println(a * b);
+		System.out.println(a / b);
+		System.out.println(a % b);
+	}
+
+}

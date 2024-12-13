@@ -1,0 +1,19 @@
+package day1213;
+
+import java.util.Scanner;
+
+public class Ex3Switch {
+
+	public static void main(String[] args) {
+		// 년도와 월을 받고 윤, 평년 여부 출력
+		// 그 월이 몇일까지 있는지?
+		// 윤년 -> 년%4==0 && 년%100!=0 || 년%400=0
+		
+		Scanner sc = new Scanner(System.in);
+		int year, month;
+		
+		System.out.println("년도 입력");
+
+	}
+
+}

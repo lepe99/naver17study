@@ -1,0 +1,13 @@
+package day1212;
+
+public class Ex3Operator {
+
+	public static void main(String[] args) {
+		// 대입연산자
+		int a;
+//		a = b = c = d = e = 3;
+		System.out.println(a);
+		
+	}
+
+}

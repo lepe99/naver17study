@@ -1,0 +1,15 @@
+package day1211;
+
+public class Practice {
+
+	public static void main(String[] args) {
+		System.out.println(123);
+		
+		
+		Double doubleValue = 1.5;
+		int intValue = (int) doubleValue;
+		System.out.println(intValue);
+	}
+	
+
+}

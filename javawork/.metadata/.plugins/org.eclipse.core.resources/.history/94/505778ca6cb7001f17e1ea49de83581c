@@ -1,0 +1,15 @@
+package day1211;
+
+public class Ex2DataType {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int kor = 90;
+		int eng = 93;
+		System.out.println("합계 = " + kor + eng);
+		//String 과 int 의 연산 : 묵시적 형 변환에 의해 String으로 출력
+		System.out.println("합계 = " + (kor + eng));
+
+	}
+
+}

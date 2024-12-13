@@ -1,0 +1,15 @@
+package boj;
+//10430
+
+import java.util.Scanner;
+
+public class Boj1a09 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		val1 = sc.nextInt();
+		val2 = sc.nextInt();
+		val3 = sc.nextInt();
+	}
+
+}

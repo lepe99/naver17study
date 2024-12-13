@@ -1,0 +1,10 @@
+package day1211;
+
+public class Ex3DataType {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		float f1 = 3.6f;//float 저장시 무조건 뒤에 f를 붙여야 함. 아니면 double로 인식.
+	}
+
+}

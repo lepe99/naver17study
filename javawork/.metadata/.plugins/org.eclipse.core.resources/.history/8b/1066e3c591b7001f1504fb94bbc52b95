@@ -1,0 +1,19 @@
+package boj;
+//2588
+
+import java.util.Scanner;
+public class Boj1a10 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String in1 = sc.nextLine();
+		String in2 = sc.nextLine();
+		sc.close();
+		int val1 = Integer.parseInt(in1);
+		String[] val2 = in2.split("");
+		
+		System.out.println(val1);
+		System.out.println(val2);
+	}
+
+}
