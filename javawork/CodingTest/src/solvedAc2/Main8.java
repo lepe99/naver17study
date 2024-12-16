@@ -1,6 +1,6 @@
-package solvedAc1;
+package solvedAc2;
 
-public class Main13 {
+public class Main8 {
 //
 	public static void main(String[] args) {
 		
