@@ -1,21 +1,19 @@
 package day1213;
 
+import java.util.Scanner;
+
 public class Ex12For {
 
 	public static void main(String[] args) {
-		System.out.println("알파벳 반복해서 출력하기");
-		for(int i=65; i<=90; i++)
-			System.out.print((char) i);
-		System.out.println();
-		for(char ch='A'; ch<='Z'; ch++) // char도 가
-			System.out.print(ch);
-		System.out.println();
+		Scanner sc = new Scanner(System.in);
+		System.out.print("숫자 입력 : ");
+		int n = sc.nextInt();
+		int sum = 0;
+		sc.close();
 		
-		//Z~A 거꾸로
-		for(char ch='Z'; ch>='A'; ch--)
-			System.out.print((ch));
-		System.out.println();
-		System.out.println();
+		for(int i=1; i<=n; i++) sum += i;
+		
+		System.out.printf("1부터 %d까지의 합 : %d", n, sum);
 		
 	}
 		
