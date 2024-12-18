@@ -6,7 +6,7 @@ public class Ex6DataType {
 		// TODO Auto-generated method stub
 		//String은 기본형 아니고 객체 타입이다.
 		String str1 = "Hello";
-		String str2 = new String("Happy");//new는 새로운 객체 생성 역
+		String str2 = new String("Happy");//new는 새로운 객체 생성 역할
 		
 		System.out.println(str1);
 		System.out.println(str2);

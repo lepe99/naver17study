@@ -8,13 +8,14 @@ public class Ex15ArrayRandom {
 		 * 배열에 1~50 사이의 난수 20개를 구하여 놓고
 		 * 오름차순으로 정렬해서 출력하시오
 		 */
+		Loop:
 		for(int i=0; i<numbers.length; i++) {
 			numbers[i] = (int) (Math.random() * 50) + 1;
 			// 이전에 발생한 값이랑 같을 경우 다시 구하기 (중복처리 로직)
 			for(int j=0; j<i; j++) {
 				if(numbers[i] == numbers[j]) {
 					i--;
-					continue;
+					continue Loop;
 				}
 			}
 		}

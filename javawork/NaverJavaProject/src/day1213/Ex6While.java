@@ -21,7 +21,7 @@ public class Ex6While {
 		while(n<=10) {
 			n++;
 			if(n % 2 == 0)
-				continue; // 조건식(while, do-while), 반복문(for) 으로 이
+				continue; // 조건식(while, do-while), 반복문(for) 으로 이동
 			System.out.printf("%3d", n);
 		}
 	}

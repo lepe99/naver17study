@@ -14,7 +14,7 @@ public class Ex3DataType {
 		double f4 = 2.123456789;
 		
 		System.out.println("f3 = " + f3);//float의 유효 소수 이하 자리는 7자리
-		System.out.println("f4 = " + f4);//double의 유효 소수 이하 자리는 15자
+		System.out.println("f4 = " + f4);//double의 유효 소수 이하 자리는 15자리
 	
 		//printf : jdk5 부터 추가된 기능, 변환기호를 이용한 출력문
 		//실수형 %f 정수형 %d 문자열 %s

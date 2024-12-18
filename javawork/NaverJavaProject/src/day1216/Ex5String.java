@@ -48,7 +48,7 @@ public class Ex5String {
 		
 		System.out.println();
 		System.out.println("str2를 모두 대문자로 변환 : " + str2.toUpperCase());
-		System.out.println("str2를 모두 대문자로 변환 : " + str2.toLowerCase());
+		System.out.println("str2를 모두 소문자로 변환 : " + str2.toLowerCase());
 		
 		System.out.println();
 		System.out.println("str2가 Have로 시작하면 true : " + str2.startsWith("Have")); // t
