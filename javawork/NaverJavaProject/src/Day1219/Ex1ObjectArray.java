@@ -2,7 +2,7 @@ package Day1219;
 
 import java.util.Scanner;
 
-public class Ex1ObjentArray {
+public class Ex1ObjectArray {
 	Student[] stuArray = new Student[3]; // 초기값 null
 	
 	public void inputData() {
@@ -51,7 +51,7 @@ public class Ex1ObjentArray {
 	}
 
 	public static void main(String[] args) {
-		Ex1ObjentArray ex1 = new Ex1ObjentArray();
+		Ex1ObjectArray ex1 = new Ex1ObjectArray();
 		// 데이터 입력
 		ex1.inputData();
 		// 제목 출력

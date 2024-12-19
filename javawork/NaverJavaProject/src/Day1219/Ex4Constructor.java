@@ -12,7 +12,7 @@ class Orange {
 //		this.age = 30;
 		
 		// 생성자에서 다른 생성자 호출 시 this() 사용
-		this("이말자","노랑"); // 인자가 맞는 생성자 호
+		this("이말자","노랑"); // 인자가 맞는 생성자 호출
 	}
 	
 	Orange(String name, String color) {

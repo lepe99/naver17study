@@ -1,7 +1,5 @@
 package Day1219;
 
-import javax.swing.plaf.synth.SynthToggleButtonUI;
-
 /*
  * 인자전달방식
  * CallByValue : 값만 전달(기본형, String)	
