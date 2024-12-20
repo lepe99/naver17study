@@ -1,4 +1,4 @@
-package Day1219;
+package day1219;
 
 /*
  * 인자전달방식

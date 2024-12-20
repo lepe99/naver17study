@@ -1,4 +1,4 @@
-package Day1219;
+package day1219;
 // 생성자도 generate로 자동 생성 가능
 class Orange {
 	private String name;

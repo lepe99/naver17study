@@ -18,7 +18,7 @@ public class FormatExam {
 		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd a hh:mm");
 		SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy년MM월dd일 HH:mm EEE"); // 요일 요약
-		SimpleDateFormat sdf4 = new SimpleDateFormat("yyyy-MM-dd HH:mm EEEE"); // 요약 풀네임
+		SimpleDateFormat sdf4 = new SimpleDateFormat("yyyy-MM-dd HH:mm EEEE"); // 요일 풀네임
 		
 		System.out.println(sdf1.format(date));
 		System.out.println(sdf2.format(date));

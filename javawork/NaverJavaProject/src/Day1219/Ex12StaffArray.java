@@ -1,5 +1,6 @@
-package Day1219;
+package day1219;
 
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 /*
@@ -17,19 +18,22 @@ public class Ex12StaffArray {
 	
 	public static void showTitle() {
 		System.out.println("=".repeat(60));
-		System.out.println("사원명\t직급\t기본급\t수당\t가족수당\t세금\t실수령액");
+		System.out.println("사원명\t직급\t기본급\t\t수당\t가족수당\t세금\t실수령액");
 		System.out.println("=".repeat(60));
 	}
 	
 
 	public static void writeStaff(Staff staff) {
+		NumberFormat nf = NumberFormat.getInstance(); // 3자리 넘으면 구분자 넣어줌
+		// nf 의 출력은 String
+		
 		System.out.print(staff.getStaffName() + "\t");
 		System.out.print(staff.getPosition() + "\t");
-		System.out.print(staff.getPay() + "\t");
-		System.out.print(staff.getExtraPay() + "\t");
-		System.out.print(staff.getFamPay() + "\t");
-		System.out.printf("%.1f\t", staff.getTax());
-		System.out.printf("%.1f\t", staff.getNetPay());
+		System.out.print(nf.format(staff.getPay()) + "\t");
+		System.out.print(nf.format(staff.getExtraPay()) + "\t");
+		System.out.print(nf.format(staff.getFamPay()) + "\t");
+		System.out.print(nf.format(staff.getTax()) + "\t");
+		System.out.print(nf.format(staff.getNetPay()) + "\t");
 		System.out.println();
 	}
 	
@@ -49,7 +53,7 @@ public class Ex12StaffArray {
 			String position = sc.nextLine();
 			System.out.printf("가족 수 입력(%d/%d) : ", i + 1, num);
 			int familyNum = Integer.parseInt(sc.nextLine());
-			staff[i] = new Staff(staffName, position, familyNum);
+			staff[i] = new Staff(staffName, position, familyNum); // 생성자 사용하였기에 setter 함수 통한 생성은 필요 x
 		}
 		
 		showTitle();

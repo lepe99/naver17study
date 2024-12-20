@@ -1,4 +1,4 @@
-package Day1219;
+package day1219;
 /*
  * 생성자란?
  * 1. 객체 생성 시 자동호출

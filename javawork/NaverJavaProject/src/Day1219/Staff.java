@@ -1,4 +1,4 @@
-package Day1219;
+package day1219;
 
 public class Staff {
 	/*
@@ -12,12 +12,18 @@ public class Staff {
 	 * 실수령액을 구해서 반환하는 메서드 기본급 + 수당 - 세금 + 가족수당을 구해서 반환 / getNetPay()
 	 */
 	
+	// 멤버변수는 private 로 숨김
 	private String staffName;
 	private String position;
 	private int pay;
 	private int extraPay;
 	private int familyNum;
 	
+	
+	// 디폴트 생성자 있어야 함!
+	public Staff() {
+	}
+
 	// 생성자
 	public Staff(String staffName, String position, int familyNum) {
 		this.staffName = staffName;
@@ -25,14 +31,11 @@ public class Staff {
 		this.familyNum = familyNum;
 	}
 
-	// getter, setter
+	// getter, setter 안 쓰는 setter 모두 제거
+	// 생성자로 인해 값 부여된 변수들 굳이 다시 불러올 필요 없이 사용ㅇ 가능
 	
 	public String getStaffName() {
 		return staffName;
-	}
-
-	public void setStaffName(String staffName) {
-		this.staffName = staffName;
 	}
 
 	
@@ -40,78 +43,60 @@ public class Staff {
 		return position;
 	}
 
-	public void setPosition(String position) {
-		this.position = position;
-	}
-
 	
 	public int getPay() {
-		String pos = this.getPosition();
-		pay = switch(pos) {
-		case "부장" -> 450;
-		case "과장" -> 300;
-		case "대리" -> 200;
-		case "사원" -> 150;
-		default -> 0;
+		pay = switch(position) {
+				case "부장" -> 4500000;
+				case "과장" -> 3000000;
+				case "대리" -> 2000000;
+				case "사원" -> 1500000;
+				default -> 0;
 		};
 		return pay;
 	}
 
-	public void setPay(int pay) {
-		this.pay = pay;
-	}
-
 	
 	public int getExtraPay() {
-		String pos = this.getPosition();
-		extraPay = switch(pos) {
-		case "부장", "과장" -> 70;
-		case "대리", "사원" -> 50;
-		default -> 0;
+		extraPay = switch(position) {
+					case "부장", "과장" -> 700000;
+					case "대리", "사원" -> 500000;
+					default -> 0;
 		};
 		return extraPay;
 	}
-
-	public void setExtraPay(int extraPay) {
-		this.extraPay = extraPay;
-	}
-
+	
 	
 	public int getFamilyNum() {
 		return familyNum;
 	}
 
-	public void setFamilyNum(int familyNum) {
-		this.familyNum = familyNum;
-	}
 	
 	// 추가 getter
-	public double getTax() {
-		double tax = this.getPay() / 20.0;
+	public int getTax() {
+		int tax = pay / 20;
 		return tax;
 	}
 	
 	
 	public int getFamPay() {
-		int numF = this.getFamilyNum();
 		int famPay;
 		
-		if(numF >= 5) famPay = 30;
-		else if (numF >= 2) famPay = 10;
+		if(familyNum >= 5) famPay = 300000;
+		else if (familyNum >= 2) famPay = 100000;
 		else famPay = 0;
 		
 		return famPay;
 	}
 	
 	
-	public double getNetPay() {
+	public int getNetPay() {
 		//기본급 + 수당 - 세금 + 가족수당
 		int pay1 = this.getPay();
 		int extraPay1 = this.getExtraPay();
-		double tax1 = this.getTax();
+		int tax1 = this.getTax();
 		int famPay1 = this.getFamPay();
 		
-		double netPay = pay1 + extraPay1 - tax1 + famPay1;
+		int netPay = pay1 + extraPay1 - tax1 + famPay1;
 		return netPay;
 	}
 	
