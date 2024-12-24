@@ -55,7 +55,7 @@ public class Ex5DefaultInterface {
 		RemoteControl tv = new Television();
 		tv.turnOn();
 		tv.turnOff();
-		tv.setMute(true); // 인터페이스에서 구현된 메서드는 상속받은 클래스를 통해서만 호출 가능하다
+		tv.setMute(true); // 인터페이스에서 구현된 메서드는 이를 구현한 클래스를 통해서만 호출 가능하다
 		tv.setMute(false);
 
 
