@@ -57,14 +57,14 @@ public class Ex11InterfaceExam {
 		Scanner sc = new Scanner(System.in);
 		
 		Loop:
-		while(true) {
-			System.out.println("=".repeat(40));
-			System.out.println("1. 추가\t2. 출력\t3. 삭제\t4. 수정\t5. 종료");
-			System.out.print("수행할 작업 입력 : ");
-			int task = Integer.parseInt(sc.nextLine());
-			System.out.println("=".repeat(40));
-			
-			switch(task) {
+			while(true) {
+				System.out.println("=".repeat(40));
+				System.out.println("1. 추가\t2. 출력\t3. 삭제\t4. 수정\t5. 종료");
+				System.out.print("수행할 작업 입력 : ");
+				int task = Integer.parseInt(sc.nextLine());
+				System.out.println("=".repeat(40));
+
+				switch(task) {
 				case 1 -> {
 					Command comm = new List();
 					dbProcess(comm);
@@ -81,7 +81,7 @@ public class Ex11InterfaceExam {
 					Command comm = new Update();
 					dbProcess(comm);
 				}
-					case 5 -> {
+				case 5 -> {
 					System.out.println("프로그램을 종료합니다");
 					break Loop;
 				}
@@ -89,9 +89,10 @@ public class Ex11InterfaceExam {
 					System.out.println("잘못된 입력입니다. 다시 입력해주세요");
 					continue;
 				}
-			}	
-			
-		}
+				}
+				
+
+			}
 
 	} 
 
