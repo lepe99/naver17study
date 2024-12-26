@@ -45,7 +45,7 @@ public class Ex2File {
 			
 			System.out.println("=".repeat(40));
 			System.out.println(file1.getAbsolutePath()); // 파일 절대 경로
-			System.out.println(file1.getName()); // 파일 경로
+			System.out.println(file1.getName()); // 파일 이름
 			System.out.println(file1.getPath()); // 파일 상대 경로
 			// 절대 경로 : 루트 디렉토리부터 시작된 경로 출력
 			// 상대 경로 : file 객체 선언 시 설정한 경로

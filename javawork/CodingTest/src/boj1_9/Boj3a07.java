@@ -19,7 +19,7 @@ public class Boj3a07 {
 			sb.append(String.format("Case #%d: %d\n", i, sum));
 		}
 		
-		System.out.println(sb); // syso 는 객체를 인자로 받을 경우 toString() 자동 호출해서 안 써도 	
+		System.out.println(sb); // out 객체는 문자열 변환 가능 객체를 인자로 받을 경우 toString() 자동 호출한다	
 		
 	}
 

@@ -11,7 +11,7 @@ public class Ex9ListVector {
 		// (선언값 따로 없으면 기본 단위인 10 단위로 증가)
 		List<String> list1 = new Vector<>(); // 기본으로 10개 할당
 		List<String> list2 = new Vector<>(5); // 5개 할당
-		List<String> list3 = new Vector<>(5, 3); // 5개 할당, 용량 증가시 3개씩 증
+		List<String> list3 = new Vector<>(5, 3); // 5개 할당, 용량 증가시 3개씩 증가
 		
 		System.out.println("list1의 데이터 개수 : " + list1.size());
 		System.out.println("list1의 할당 크기 : " + ((Vector<String>) list1).capacity());
