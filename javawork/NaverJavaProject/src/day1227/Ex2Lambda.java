@@ -12,7 +12,7 @@ package day1227;
 @FunctionalInterface // 메서드가 하나인지 아닌지 검증하는 역할, 두개일경우 오류발생
 interface Orange {
 	public void write();// 추상 메서드
-	// public void study();//메서드를 두개 추가시 오류발생
+	// public void study(); // 메서드를 두개 추가시 오류발생
 }
 
 @FunctionalInterface
@@ -31,15 +31,14 @@ public class Ex2Lambda {
 		}
 	};
 	
-	public void lambdaMethod()
-	{
+	public void lambdaMethod() {
 		Orange orange1 = () -> System.out.println("람다식 오렌지 메서드 호출");
 		orange1.write();
 		
 		Orange orange2 = () -> System.out.println("안녕하세요. 람다씨!");
 		orange2.write();
 		
-		DataAdd add1 = (int x, int y)->System.out.println(x + "+" + y + "=" + (x + y));
+		DataAdd add1 = (int x, int y) -> System.out.println(x + y);
 		add1.add(10, 20);
 		add1.add(3, 5);
 	}	

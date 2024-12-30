@@ -13,7 +13,7 @@ public class Ex4Thread extends Thread {
 	}
 	
 	@Override
-	public void run() {
+	public void run() { // 스레드 클래스의 메서드를 오버라이딩
 		for(int i=1; i<=count; i++)
 		{
 			System.out.println(msg + ":" + count);

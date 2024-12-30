@@ -15,8 +15,7 @@ public class Ex7InetAddress {
 
 		System.out.println("Naver 의 서버 컴퓨터의 IP");
 		InetAddress []naverInet=InetAddress.getAllByName("www.naver.com");
-		for(InetAddress inet : naverInet)
-		{
+		for(InetAddress inet : naverInet) {
 			System.out.println("Naver IP : " + inet.getHostAddress());
 			System.out.println("Naver 컴퓨터 이름 : " + inet.getHostName());
 			System.out.println("-".repeat(30));
@@ -26,8 +25,7 @@ public class Ex7InetAddress {
 
 		System.out.println("Google 의 서버 컴퓨터의 IP");
 		InetAddress[] googleInet = InetAddress.getAllByName("www.google.com");
-		for(InetAddress inet : googleInet)
-		{
+		for(InetAddress inet : googleInet) {
 			System.out.println("Google IP : " + inet.getHostAddress());
 			System.out.println("Google 컴퓨터 이름 : " + inet.getHostName());
 			System.out.println("-".repeat(30));
@@ -37,8 +35,7 @@ public class Ex7InetAddress {
 
 		System.out.println("Nate 의 서버 컴퓨터의 IP");
 		InetAddress []nateInet=InetAddress.getAllByName("www.nate.com");
-		for(InetAddress inet : nateInet)
-		{
+		for(InetAddress inet : nateInet) {
 			System.out.println("Nate IP : " + inet.getHostAddress());
 			System.out.println("Nate 컴퓨터 이름 : " + inet.getHostName());
 			System.out.println("-".repeat(30));

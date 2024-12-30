@@ -16,7 +16,7 @@ public class Ex5Runnable implements Runnable {
 	}
 	
 	@Override
-	public void run() {
+	public void run() { // Runnable 인터페이스의 추상 메서드를 구현
 		for(int i=1; i<=count; i++)
 		{
 			System.out.println(msg + ":" + i);
@@ -25,13 +25,13 @@ public class Ex5Runnable implements Runnable {
 	}
 	
 	public static void main(String[] args) {
-		Ex5Runnable ex1=new Ex5Runnable("1번 쓰레드", 300);
-		Ex5Runnable ex2=new Ex5Runnable("2번 쓰레드", 300);
-		Ex5Runnable ex3=new Ex5Runnable("3번 쓰레드", 300);
+		Ex5Runnable ex1 = new Ex5Runnable("1번 쓰레드", 300);
+		Ex5Runnable ex2 = new Ex5Runnable("2번 쓰레드", 300);
+		Ex5Runnable ex3 = new Ex5Runnable("3번 쓰레드", 300);
 		
-		Thread th1=new Thread(ex1);
-		Thread th2=new Thread(ex2);
-		Thread th3=new Thread(ex3);
+		Thread th1 = new Thread(ex1);
+		Thread th2 = new Thread(ex2);
+		Thread th3 = new Thread(ex3);
 		
 		//run 메서드 호출
 		th1.start();

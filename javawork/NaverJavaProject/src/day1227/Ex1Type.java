@@ -1,7 +1,7 @@
 package day1227;
 
 // <T> 는 T가 Type 파라미터임을 뜻하는 기호로, 타입이 필요한 자리에 
-// T를 사용한다, T는 클래스 타입만 가능하다
+// T를 사용한다, T에는 참조 자료형(String, Integer, Double, ...) 만 올 수 있다
 class GenericType<T> {
 	T[] v;
 	
