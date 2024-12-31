@@ -96,20 +96,18 @@ public class Ex6TableCRUD2 extends JFrame{
 		}
 	}
 	
-	//List 의 데이타를 테이블에 출력해주는 메서드
-	public void writeTableData()
-	{
-		//기존의 테이블에 출력된 데이타를 삭제후 다시 추가
+	// List 의 데이타를 테이블에 출력해주는 메서드
+	public void writeTableData() {
+		// 기존의 테이블에 출력된 데이타를 삭제후 다시 추가
 		tableModel.setRowCount(0);		
 	
-		for(Student stu:list)
-		{
-			Vector<String> data=new Vector<String>();
+		for(Student stu : list) {
+			Vector<String> data = new Vector<String>();
 			
-			int kor=stu.getKor();
-			int eng=stu.getEng();
-			int sum=kor+eng;
-			double avg=sum/2.0;
+			int kor = stu.getKor();
+			int eng = stu.getEng();
+			int sum = kor + eng;
+			double avg = sum / 2.0;
 			
 			data.add(stu.getName());
 			data.add(String.valueOf(kor));
@@ -117,11 +115,13 @@ public class Ex6TableCRUD2 extends JFrame{
 			data.add(String.valueOf(sum));
 			data.add(String.valueOf(avg));
 			
-			//table 에 추가(추가하는 메서드도 모델이 갖구있음)
+			// table 에 추가(추가하는 메서드도 모델이 갖구있음)
 			tableModel.addRow(data);
 		}
 		
 	}
+	
+	
 	public void initDesign()
 	{
 		//파일을 읽어온다
@@ -153,11 +153,11 @@ public class Ex6TableCRUD2 extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				//입력한 데이타를 읽어서 Student 에 넣은후 다시 list 에 추가
-				String name=tfName.getText();
-				int kor=Integer.parseInt(tfKor.getText());
-				int eng=Integer.parseInt(tfEng.getText());
+				String name = tfName.getText();
+				int kor = Integer.parseInt(tfKor.getText());
+				int eng = Integer.parseInt(tfEng.getText());
 				
-				Student stu=new Student(name, kor, eng);
+				Student stu = new Student(name, kor, eng);
 				list.add(stu);
 				
 				//table 다시 출력
@@ -184,8 +184,8 @@ public class Ex6TableCRUD2 extends JFrame{
 		this.add("North",panel);
 	}
 
-	public void saveFile()
-	{
+	
+	public void saveFile() {
 		//List 의 내용을 파일에 저장한다
 		FileWriter fw=null;
 		
@@ -210,6 +210,8 @@ public class Ex6TableCRUD2 extends JFrame{
 			}
 		}
 	}
+	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new Ex6TableCRUD2();

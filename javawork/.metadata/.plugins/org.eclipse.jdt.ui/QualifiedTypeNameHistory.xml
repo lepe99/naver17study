@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.lang.ArrayIndexOutOfBoundsException"/>
-    <fullyQualifiedTypeName name="day1223.UserException"/>
-    <fullyQualifiedTypeName name="day1223.HankookTire"/>
     <fullyQualifiedTypeName name="day1223.KumhoTire"/>
     <fullyQualifiedTypeName name="day1223.Vehicle"/>
     <fullyQualifiedTypeName name="day1223.Driver"/>
@@ -60,4 +57,7 @@
     <fullyQualifiedTypeName name="javax.swing.JButton"/>
     <fullyQualifiedTypeName name="javax.swing.JLabel"/>
     <fullyQualifiedTypeName name="day1226.Ex6TableCRUD"/>
+    <fullyQualifiedTypeName name="day1227.Speakable"/>
+    <fullyQualifiedTypeName name="day1227.Person"/>
+    <fullyQualifiedTypeName name="day1227.Orange"/>
 </qualifiedTypeNameHistroy>

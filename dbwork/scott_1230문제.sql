@@ -27,7 +27,7 @@ SELECT ename, sal, mgr FROM emp WHERE sal >= 1500 AND sal <= 3000;
 SELECT ename, sal, mgr FROM emp WHERE sal BETWEEN 1500 AND 3000;
 
 -- 9. in 을 이용해 job이 clerk, president, manager인 사람의 전체 필드를 모두 출력
-SELECT * FROM emp WHERE job in ('CLERK', 'PRESIDENT', 'MANAGER');
+SELECT * FROM emp WHERE job IN ('CLERK', 'PRESIDENT', 'MANAGER');
 
 --10. ename, sal, comm, sal*comm 을 출력, comm 이 null 인 경우 1로 변경하여 출력
 SELECT ename, sal, comm, sal * NVL(comm, 1) FROM emp;
@@ -43,7 +43,7 @@ SELECT * FROM emp WHERE sal < (SELECT AVG(sal) FROM emp);
 SELECT ename, job, sal FROM emp WHERE SUBSTR(ename, 1, 1) IN ('A', 'S', 'M');
 
 --14. mgr을 group으로 묶어 인원수와 평균sal 구하기 (평균은 무조건 올림)
-SELECT mgr, count(*) 인원수, CEIL(AVG(sal)) 평균연봉 FROM emp GROUP BY mgr;
+SELECT mgr, count(*) 인원수, CEIL(AVG(sal)) 평균연봉 FROM emp WHERE mgr IS NOT NULL GROUP BY mgr;
 
 --15. SCOTT 의 sal 과 같은 sal을 받는 사람을 조회 (필드 : ename, sal)
 SELECT ename, sal FROM emp 
@@ -54,6 +54,7 @@ SELECT ename, job FROM emp WHERE LENGTH(ename) = 4;
 
 --17. ename의 3번째 글자가 r이거나 a인 사람 조회(필드 : ename, job)
 SELECT ename, job FROM emp WHERE SUBSTR(ename, 3, 1) IN('R', 'A');
+SELECT ename, job FROM emp WHERE ename LIKE '__R%' OR ename LIKE '__A%' ;
 
 --18. job 직업별로 인원수와 최고연봉을 출력 (직업의 오름차순 정렬)
 SELECT job 직업, COUNT(*) 인원수, MAX(sal) 최고연봉 FROM emp 
