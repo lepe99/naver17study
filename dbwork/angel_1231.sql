@@ -236,3 +236,13 @@ DELETE FROM FOOD WHERE FOODNUM=300; -- 아무도 주문을 예약하지 않음. 
 -- 부모 테이블을 삭제해보자
 DROP TABLE FOOD; -- 삭제 안됨, 자식 테이블을 먼저 삭제해야 부모 테이블도 삭제 가능
 
+-- 모든 테이블 삭제 / 하위 테이블 부터
+DROP TABLE BOOKING;
+DROP TABLE FOOD;
+DROP TABLE EMP;
+DROP TABLE TEST1;
+DROP TABLE TEST2;
+DROP SEQUENCE SEQ1;
+DROP SEQUENCE SEQ_FOOD;
+
+COMMIT;

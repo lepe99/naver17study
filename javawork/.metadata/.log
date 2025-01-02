@@ -4109,3 +4109,16 @@ java.lang.IllegalStateException: Disconnected before saving. https://bugs.eclips
 		at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4382)
 		at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:4005)
 		... 19 more
+!SESSION 2025-01-02 10:03:20.644 -----------------------------------------------
+eclipse.buildId=4.34.0.20241128-0756
+java.version=21.0.5
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=aarch64, WS=cocoa, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product -keyring /Users/lee/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch aarch64 -product org.eclipse.epp.package.jee.product -keyring /Users/lee/.eclipse_keyring
+
+!ENTRY ch.qos.logback.classic 1 0 2025-01-02 10:03:21.706
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2025-01-02 10:03:22.627
+!MESSAGE Logback config file: /Users/lee/naver1210/study/javawork/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.7.0.20241001-1350.xml
