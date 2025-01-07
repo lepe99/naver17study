@@ -15,6 +15,7 @@ public class Ex1Model {
 
     /**
      * 메뉴 테이블 반환
+     *
      * @return 2차원 컬렉션 객체 형태로 메뉴 테이블 반환
      */
     public List<Vector<String>> getResData() {
@@ -50,6 +51,7 @@ public class Ex1Model {
 
     /**
      * 메뉴 테이블과 예약 테이블 조인 결과 반환
+     *
      * @return 메뉴 테이블과 예약 테이블 조인 결과 2차원 컬렉션 객체로 반환
      */
     public List<Vector<String>> getOrderData() {
@@ -170,4 +172,31 @@ public class Ex1Model {
         }
 
     }
+
+    /**
+     * 등록 메뉴를 예약한 건 수 반환
+     */
+    public int getOrderCnt(int num) {
+        int cnt = 0;
+        Connection conn = connect.getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String sql = "select count(*) count from foodorder where num = ?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, String.valueOf(num));
+            rs = pstmt.executeQuery();
+
+            rs.first(); // 첫번째 커서 값만 불러옴
+            cnt = rs.getInt("count");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            connect.dbClose(rs, pstmt, conn);
+        }
+        return cnt;
+    }
+
 }

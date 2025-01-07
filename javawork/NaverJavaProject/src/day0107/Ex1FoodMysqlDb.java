@@ -1,7 +1,5 @@
 package day0107;
 
-import day0106.Ex2ShopTable;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
