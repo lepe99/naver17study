@@ -1,25 +1,33 @@
 import lombok.*;
 
+import java.io.InputStream;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Target;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.net.URL;
+import java.net.URLStreamHandler;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 
 public class test {
-    Calendar cal = Calendar.getInstance();
+//    Constructor[] getDeclaredConstructors()
+//    Field[] getDeclaredFields()
+//    Method[] getDeclaredMethods()
 
-    int year = cal.get(Calendar.YEAR);
-    int month = cal.get(Calendar.MONTH);
-    int day = cal.get(Calendar.DAY_OF_MONTH);
-    int week = cal.get(Calendar.DAY_OF_WEEK);
-    int amPm = cal.get(Calendar.AM_PM);
-    int hour = cal.get(Calendar.HOUR);
-    int minute = cal.get(Calendar.MINUTE);
-    int second = cal.get(Calendar.SECOND);
-    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-    LocalDateTime target = LocalDateTime.of(year, month, day, hour, minute, second);
+    //    URL getResource(String name)
+//    InputStream getResourceAsStream(String name)
+    @Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE, ElementType.FIELD, ElementType.CONSTRUCTOR
+            , ElementType.METHOD, ElementType.LOCAL_VARIABLE, ElementType.PACKAGE})
+    public @interface TestAnnotation {
+    }
+//    isAnnotationPresent(어노테이션이름.클래스)
+
     public static void main(String[] args) {
-        int[] arr = new int[]{1,2,3,4,5,6,7,8,9};
+        int[] arr = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
         System.out.println(arr[-1]);
     }
 
