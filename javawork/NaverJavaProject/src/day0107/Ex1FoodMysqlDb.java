@@ -123,15 +123,16 @@ public class Ex1FoodMysqlDb extends JFrame {
             }
             int idx = Integer.parseInt(resTableModel.getValueAt(row, 0).toString());
             // 조인 테이블의 참조 시 대처 위한 처리
-            for (int i = 0; i < orderTableModel.getRowCount(); i++) {
-                int orderNum = Integer.parseInt(orderTableModel.getValueAt(i, 0).toString());
-                if (orderNum == idx) {
-                    JOptionPane.showMessageDialog(Ex1FoodMysqlDb.this, "삭제 불가능, 이 상품의 예약자가 존재합니다");
+            int cnt = foodModel.getOrderCnt(idx);
+                if (cnt != 0) {
+                    JOptionPane.showMessageDialog(Ex1FoodMysqlDb.this, "삭제 불가능, 이 상품의 예약자가 " +
+                             cnt + "명 존재합니다");
                     return;
                 }
-            }
+
             // 삭제
             foodModel.menuDelete(idx);
+            JOptionPane.showMessageDialog(Ex1FoodMysqlDb.this, "메뉴가 삭제되었습니다");
             // 테이블 호출
             writeMenu();
         });
@@ -181,6 +182,7 @@ public class Ex1FoodMysqlDb extends JFrame {
             int idx = Integer.parseInt(orderTableModel.getValueAt(row, 0).toString());
             // 삭제
             foodModel.orderDelete(idx);
+            JOptionPane.showMessageDialog(Ex1FoodMysqlDb.this, "예약이 취소되었습니다");
             // 테이블 호출
             writeOrderJoin();
         });

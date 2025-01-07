@@ -188,8 +188,8 @@ public class Ex1Model {
             pstmt.setString(1, String.valueOf(num));
             rs = pstmt.executeQuery();
 
-            rs.first(); // 첫번째 커서 값만 불러옴
-            cnt = rs.getInt("count");
+            if (rs.next())
+                cnt = rs.getInt("count");
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
