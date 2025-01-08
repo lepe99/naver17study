@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--  스타일 영역 설정-->
+    <style>
+        /*범용 클래스 : 모든 태그에 적용하려면 .클래스명*/
+        .happy {
+            font-size: 20px;
+            background-color: pink;
+            border: solid 5px green;
+        }
+
+        /*특정 태그에서만 사용 가능한 클래스 만들기*/
+        div.hello {
+            color: orange;
+            background-color: cyan;
+            font-size: 2em;
+            width: 300px;
+        }
+
+        /* id는 #으로 표현, 아이디는 고유 이름이므로 앞의 태그는 생략해도 된다 */
+        #one{
+            border: dotted 2px grey;
+            /*rgb 값의 앞뒤 숫자가 동일하다면 하나만 써도 됨*/
+            background-color: #fef;
+        }
+
+        #two{
+            border: dashed 2px green;
+            color: blue;
+            background-color: #ccf;
+        }
+        /*> : (selector) 하위 태그, 공백 : 모든 하위 태그*/
+        div.java>div{
+            font-family: Impact;
+            color: red;
+        }
+
+        div.java>b{
+            font-size: 2em;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<!--범용 클래스 호출-->
+<span style="color: blueviolet;" class="happy">오늘은 수요일입니다</span>
+<br><br>
+<b class="happy">Happy Day!!</b>
+<u class="happy">Underline Style</u>
+<br><br>
+<div class="hello">Hello!</div>
+<b class="hello">div 이외에서 적용 안됨!</b>
+
+<!--여러 클래스 동시 적용 시 공백으로 구분-->
+<div class="hello happy">안녕하세요</div>
+
+<!--수평선-->
+<hr>
+
+<!--id : 요소에 고유 식별자 부여-->
+<div id="one">Div Class ID One</div>
+<div class="java">
+    Div Class Java
+    <div id="two">
+        Div ID two
+    </div>
+    <div>
+        div class java 의 아래 태그 div
+    </div>
+    <b>div class java 의 아래 태그 b</b>
+</div>
+</body>
+</html>

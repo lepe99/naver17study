@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      div.two>img{
+        width: 100px;
+        height: 120px;
+        border-style: groove;
+        border-width: 5px;
+        border-color: hotpink;
+      }
+
+      div.three>img{
+        width: 100px;
+        height: 100px;
+        border: solid 2px gray;
+        border-radius: 100px; /*모서리에 대한 각도*/
+      }
+
+      div.one>img{
+        /*각 모서리 각도 달리 설정 가능 (왼쪽 위부터 시계방향)*/
+        border-radius: 10px 20px 30px 40px;
+      }
+
+      #twoloc{
+        /*relative : 상대 좌표 / absolute : 절대 좌표(조상 요소를 기준) / fixed : 고정(뷰포트(브라우저 창) 기준)*/
+        position: absolute;
+        left: 400px;
+        top: 100px;
+        border: solid 2px gray;
+        width: 300px;
+        height: 150px;
+        text-align: center; /*수평 가운데 정렬*/
+        padding-top: 20px; /*padding-위치에 안쪽 여백 지정*/
+      }
+
+      div.three>h3{
+        width: 300px;
+        text-align: center;
+        border: inset 4px gold;
+        /*글자 그림자*/
+        text-shadow: 3px 3px 3px gray;
+      }
+
+      div.three{
+        border: solid 5px red;
+        width: 400px;
+        box-shadow: 5px 5px 5px orange;
+        position: fixed;
+        right: 50px;
+        bottom: 50px;
+      }
+    </style>
+</head>
+<body>
+  <h2>img tag 연습</h2>
+  <div class="one">
+    <!--alt : 이미지의 대체 텍스트 / src : 이미지 소스 / title : 이미지에 대한 추가정보 제공-->
+    <!--width, height : 이미지 크기 조정, 둘 중 하나 생략 시 나머지는 비율에 맞게 조정-->
+    <!--hspace, vspace : 좌우, 상하 여백 부여-->
+    <img src="../photo/12.jpg" alt="박보영" title="박보영입니다"
+         width="100" border="5" hspace="20" vspace="20">
+    사진옆 <br>
+    다음줄
+  </div>
+  <div class="two" id="twoloc">
+    <img src="../photo/19.jpg" alt="수지">
+    <img src="../photo/13.jpg" alt="박신혜">
+  </div>
+  <div class="three">
+    <h3>Shop 제품들</h3>
+    <img src="../photo2/14.jpg" alt="" title="신발들">
+    <img src="../photo2/30.jpg" alt="" title="머리띠">
+  </div>
+</body>
+</html>

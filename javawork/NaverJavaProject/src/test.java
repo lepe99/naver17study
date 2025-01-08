@@ -1,34 +1,29 @@
-import lombok.*;
+import day1227.Ex4Thread;
 
-import java.io.InputStream;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Target;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.net.URLStreamHandler;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
+public class test extends Thread {
+    String msg;
+    int count;
 
-
-public class test {
-//    Constructor[] getDeclaredConstructors()
-//    Field[] getDeclaredFields()
-//    Method[] getDeclaredMethods()
-
-    //    URL getResource(String name)
-//    InputStream getResourceAsStream(String name)
-    @Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE, ElementType.FIELD, ElementType.CONSTRUCTOR
-            , ElementType.METHOD, ElementType.LOCAL_VARIABLE, ElementType.PACKAGE})
-    public @interface TestAnnotation {
+    public test(String msg, int count) {
+        this.msg = msg;
+        this.count = count;
     }
-//    isAnnotationPresent(어노테이션이름.클래스)
+
+    @Override
+    public void run() { // 스레드 클래스의 메서드를 오버라이딩
+        for (int i = 1; i <= count; i++) {
+            System.out.println(msg + ":" + count);
+        }
+    }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
-        System.out.println(arr[-1]);
-    }
+        Ex4Thread ex1 = new Ex4Thread("1번 쓰레드", 300);
+        Ex4Thread ex2 = new Ex4Thread("2번 쓰레드", 300);
+        Ex4Thread ex3 = new Ex4Thread("3번 쓰레드", 300);
 
+        //run 메서드 호출-start
+        ex1.start();
+        ex2.start();
+        ex3.start();
+    }
 }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      table.tb{
+        width: 300px;
+        border-collapse: collapse;
+        border: inset 3px green;
+      }
+
+      table.tb>thead>tr{
+        height: 40px;
+        background-color: yellow;
+        color: blue;
+      }
+
+      table.tb>thead>tr>th{
+        border-right: dotted 1px gray;
+        border-bottom: double 4px red;
+      }
+
+      table.tb>tbody>tr>td{
+        border: solid 1px gray;
+        background-color: lightcyan;
+        text-align: center;
+      }
+    </style>
+</head>
+<body>
+  <table class="tb">
+    <thead> <!--테이블 헤드 / 바디 따로 지정-->
+    <tr>
+      <th>이름</th><th>나이</th><th>혈액형</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>김길동</td><td>23세</td><td>A형</td>
+    </tr>
+    <tr>
+      <td>김길동</td><td>23세</td><td>A형</td>
+    </tr>
+    <tr>
+      <td>김길동</td><td>23세</td><td>A형</td>
+    </tr>
+    </tbody>
+  </table>
+  <hr color="red" width="500" align="left">
+</body>
+</html>

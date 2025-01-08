@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      div.tb1>table{
+        border-collapse: collapse; /*separate 가 기본값*/
+      }
+
+      div.tb2{
+        margin-top: 30px;
+      }
+
+      div.tb2>table{
+        width: 400px;
+        border-collapse: collapse;
+        border: groove 10px gold;
+      }
+
+      div.tb2>table img{
+        width: 130px;
+      }
+
+      div.tb2>table td{
+        border: dotted 1px gray;
+      }
+    </style>
+</head>
+<body>
+<div class="tb1">
+  <table border="1" style="width: 300px;">
+    <caption>[테이블 #1]</caption>
+    <!--align : left(기본값), center, right-->
+    <!--valign : middle(기본값), top, bottom-->
+    <tr height="40" align="center" bgcolor="orange">
+      <td>이름</td>
+      <td>핸드폰</td>
+    </tr>
+    <tr height="50">
+      <td>이영자</td>
+      <td>010-1236-3457</td>
+    </tr>
+    <tr height="100" valign="top">
+      <td align="center">강호동</td>
+      <td bgcolor="#d3d3d3">010-6234-8734</td>
+    </tr>
+  </table>
+</div>
+<div class="tb2">
+  <table>
+    <!--rowspan / colspan : 여러 행 / 열 합치기-->
+    <tr>
+      <td rowspan="4" align="center">
+        <img src="../photo/19.jpg" alt="">
+      </td>
+      <td>이름 : 수지</td>
+    </tr>
+    <tr>
+      <td>나이 : 23세</td>
+    </tr>
+    <tr>
+      <td>핸드폰 : 010-1734-3475</td>
+    </tr>
+    <tr>
+      <td>주소 : 서울시 강남구</td>
+    </tr>
+    <tr bgcolor="orange">
+      <td colspan="2" align="center">
+        <b style="font-size: 1.5em">비트캠프 17기 수강생</b>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

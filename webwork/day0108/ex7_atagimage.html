@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+
+  <style>
+    /*body 아래 모든 태그에 적용*/
+    body *{
+      font-family: 'Jua';
+    }
+
+    img{
+      width: 100px;
+      height: 100px;
+      border-radius: 100px;
+    }
+
+    a{
+      text-decoration: none;
+      color: black;
+    }
+
+    div.figure>figure{
+      float: left;
+      width: 110px;
+    }
+
+    div.figure>figure>figcaption{
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+<marquee width="400" behavior="slide" direction="right">Have a <mark>Nice</mark> Day!</marquee> <!--이거 몰라도 됨-->
+<!--behavior : 기본은 scroll / slide, alternate-->
+<!--direction : 기본 값 left-->
+
+<div>
+  <a href="https://www.naver.com/">
+    <img src="../photo/K-052.png" alt="">
+  </a>
+</div>
+<div>
+  <a href="https://www.nate.com/">
+    <figure> <!--이미지와 캡션을 그룹화-->
+      <img src="../photo/K-041.png" alt="">
+      <figcaption style="padding-left: 30px"> <!--figure 요소의 캡션 정의-->
+        <b>Nate</b>
+      </figcaption>
+    </figure>
+  </a>
+  <a href="../photo/K-049.png">
+    <figure>
+      <img src="../photo/K-049.png" alt="">
+      <figcaption>
+        <b>예쁜 유리잔</b>
+      </figcaption>
+    </figure>
+  </a>
+</div>
+<hr>
+<div class="figure">
+  <figure>
+    <img src="../photo/17.jpg" alt="">
+    <figcaption>
+      <b>신민아</b>
+    </figcaption>
+  </figure>
+  <figure>
+    <img src="../photo/18.jpg" alt="">
+    <figcaption>
+      <b>신세경</b>
+    </figcaption>
+  </figure>
+  <figure>
+    <img src="../photo/15.jpg" alt="">
+    <figcaption>
+      <b>설현</b>
+    </figcaption>
+  </figure>
+</div>
+</body>
+</html>
