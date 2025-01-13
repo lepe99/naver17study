@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap"
+            rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body * {
+            font-family: 'Jua';
+        }
+    </style>
+</head>
+<body>
+<div class="box" style="margin: 50px 100px;">
+    <img src="../photo/11.jpg" width="200" style="border: 5px solid pink;">
+</div>
+<div style="margin: 20px 130px;">
+    <button type="button" class="btn btn-success btn-sm" id="btnSmall">점점작게</button>
+    <button type="button" class="btn btn-success btn-sm" id="btnLarge">점점크게</button>
+</div>
+<script>
+    // 버튼을 클릭 시 현재 크기보다 20씩 점점 작게/크게
+    let photo = document.querySelector("div.box>img");
+    let b1 = document.getElementById("btnSmall").onclick = function () {
+        // let widthAfter = photo.getAttribute("width");
+        // widthAfter -= 20;
+        let widthAfter = parseInt(photo.getAttribute("width")) - 20;
+        photo.setAttribute("width", widthAfter);
+    };
+    let b2 = document.getElementById("btnLarge").onclick = function () {
+        let widthAfter = photo.getAttribute("width");
+        widthAfter = Number(widthAfter) + 20; // 문자열 덧셈이라 변환함
+        photo.setAttribute("width", widthAfter);
+    };
+</script>
+
+<hr>
+
+<div class="box2" style="margin: 50px 10px;">
+    <img src="../photo2/25.jpg" style="width: 200px; border: 5px solid pink;">
+</div>
+<div style="margin: 20px 130px;">
+    <button type="button" class="btn btn-success btn-sm" id="btnSmall2">점점작게</button>
+    <button type="button" class="btn btn-success btn-sm" id="btnLarge2">점점크게</button>
+</div>
+<script>
+    // 이번엔 스타일시트 수정
+    let photo2 = document.querySelector("div.box2>img");
+    let b3 = document.getElementById("btnSmall2").onclick = function () {
+        let widthAfter = photo2.style.width; // 단위 같이 나옴 (px)
+        widthAfter = parseInt(widthAfter, 10) - 20; // parseInt(문자열, 진수값) 이용해 px 없앰 (10은 기본값이라 생략 가능하다)
+        photo2.style.width = widthAfter + "px"; // 스타일시트에 넣어야하므로 px 다시 추가
+    };
+    let b4 = document.getElementById("btnLarge2").onclick = function () {
+        let widthAfter = parseInt(photo2.style.width) + 20;
+        photo2.style.width = widthAfter + "px";
+    };
+</script>
+</body>
+</html>

@@ -17,13 +17,5 @@ public class test extends Thread {
     }
 
     public static void main(String[] args) {
-        Ex4Thread ex1 = new Ex4Thread("1번 쓰레드", 300);
-        Ex4Thread ex2 = new Ex4Thread("2번 쓰레드", 300);
-        Ex4Thread ex3 = new Ex4Thread("3번 쓰레드", 300);
-
-        //run 메서드 호출-start
-        ex1.start();
-        ex2.start();
-        ex3.start();
     }
 }
