@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap"
+            rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body * {
+            font-family: 'Jua';
+        }
+
+        table.calc {
+            width: 310px;
+            border-collapse: collapse;
+            border: 5px groove gray;
+        }
+
+        table.calc tr {
+            height: 70px;
+        }
+
+        table.calc tr .btnA {
+            height: 68px;
+            width: 70px;
+            color: red;
+            background-color: #cff;
+            font-size: 22px;
+        }
+
+        table.calc tr .btnB {
+            height: 68px;
+            width: 70px;
+            font-size: 22px;
+        }
+
+        div.result {
+            text-align: right;
+            padding-right: 10px;
+            font-size: 40px;
+        }
+    </style>
+    <script>
+        // 전역변수
+        let bFirst = true; // true일경우 숫자 새로찍음
+        let bDot = false; // false일경우 .(도트) 추가됨
+        let num1, num2; // t숫자 저장
+        let oper; // 연산자 저장
+        let r;
+        window.onload = () => {
+            r = document.querySelector("div.result");
+        }
+
+        // 일반 함수들
+        function goNum(num) {
+            // alert(num);
+            if (bFirst) {
+                r.innerText = num;
+                if (num === 0)
+                    bFirst = true;
+                else
+                    bFirst = false;
+            } else {
+                r.innerText += num;
+            }
+        }
+
+        function goOper(op) {
+            //  alert(op);
+            num1 = Number(r.innerText); // 현재 창의 숫자를 num1 에 저장
+            oper = op; // 연산자 전역변수에 저장
+            bFirst = true; // 연산자 이후 숫자를 클릭시 새로 찍히도록
+            bDot = false; // 연산자이후의 숫자에 다시 도트 찍을 수 있도록 false 로 변경
+        }
+
+        function goDot() {
+            if (!bDot) {
+                r.innerText += ".";
+                bDot = true;
+            }
+        }
+
+        function goC() {
+            // 전체 초기화
+            num1 = 0;
+            num2 = 0;
+            oper = "";
+            bFirst = true;
+            bDot = false;
+            r.innerText = "0";
+        }
+
+        function goCE() {
+            // 일부 초기화
+            num2 = 0;
+            bFirst = true;
+            bDot = false;
+            r.innerText = "0";
+        }
+
+        function goSign() {
+            r.innerText = Number(r.innerText) * -1;
+        }
+
+        function goBack() {
+            // length, charAt, substring 함수들 사용해서 구현하기
+            // 출력창의 값 가져오기
+            let s = r.innerText;
+            // 길이 구하기
+            let len = s.length;
+            // 제거할 마지막 글자 얻기
+            let lastChar = s.charAt(len - 1);
+            // 마지막 글자가 .(도트) 일경우 bDot=false로 변경
+            if (lastChar === '.') {
+                bDot = false;
+            }
+            // 길이-1개 만큼 추출
+            let ss = s.substring(0, len - 1); // 마지막 한글자 빼고 추출
+            // 다시 출력창에 넣기
+            r.innerText = ss;
+            if (ss.length === 0)
+                r.innerText = "0";
+        }
+
+        function goEqual() {
+            num2 = Number(r.innerText);
+            r.innerText = eval(num1 + oper + num2); // 문자열 형태의 수식을 계산해서 r에 넣는다
+        }
+    </script>
+</head>
+<body>
+<div style="margin: 20px;">
+    <input type="button" value="숨김" class="calcView1">
+    <input type="button" value="보임" class="calcView2">
+
+    <table class="calc">
+        <caption align="top">
+            <b>간단 계산기</b>
+            <script>
+                // table 의 요소값 얻기
+                let t = document.querySelector(".calc");
+                document.querySelector(".calcView1").onclick = () => {
+                    t.style.visibility = "hidden"; // 방법1,자리차지함
+                    //t.style.display="none"; // 방법2,자리차지 안함
+
+                }
+                document.querySelector(".calcView2").onclick = () => {
+                    t.style.visibility = "visible";
+                    // t.style.display="block";
+                }
+            </script>
+        </caption>
+        <tr>
+            <td colspan="4">
+                <div class="result">0</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="+/-" class="btnA" onclick="goSign()">
+            </td>
+            <td>
+                <input type="button" value="CE" class="btnA" onclick="goCE()">
+            </td>
+            <td>
+                <input type="button" value="C" class="btnA" onclick="goC()">
+            </td>
+            <td>
+                <input type="button" value="Back" class="btnA" onclick="goBack()">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="7" class="btnB" onclick="goNum(this.value)">
+            </td>
+            <td>
+                <input type="button" value="8" class="btnB" onclick="goNum(this.value)">
+            </td>
+            <td>
+                <input type="button" value="9" class="btnB" onclick="goNum(this.value)">
+            </td>
+            <td>
+                <input type="button" value="/" class="btnA" onclick="goOper(this.value)">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="4" class="btnB" onclick="goNum(this.value)">
+            </td>
+            <td>
+                <input type="button" value="5" class="btnB" onclick="goNum(this.value)">
+            </td>
+            <td>
+                <input type="button" value="6" class="btnB" onclick="goNum(this.value)">
+            </td>
+            <td>
+                <input type="button" value="*" class="btnA" onclick="goOper(this.value)">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="1" class="btnB" onclick="goNum(this.value)">
+            </td>
+            <td>
+                <input type="button" value="2" class="btnB" onclick="goNum(this.value)">
+            </td>
+            <td>
+                <input type="button" value="3" class="btnB" onclick="goNum(this.value)">
+            </td>
+            <td>
+                <input type="button" value="+" class="btnA" onclick="goOper(this.value)">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="0" class="btnB" onclick="goNum(this.value)">
+            </td>
+            <td>
+                <input type="button" value="." class="btnB" onclick="goDot()">
+            </td>
+            <td>
+                <input type="button" value="=" class="btnB" onclick="goEqual()">
+            </td>
+            <td>
+                <input type="button" value="-" class="btnA" onclick="goOper(this.value)">
+            </td>
+        </tr>
+    </table>
+</div>
+<img src="../mycar/mycar13.png" width="200">내 차의 위치를 확인하세요!!!!
+</body>
+</html>

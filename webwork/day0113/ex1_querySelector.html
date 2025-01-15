@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap"
+            rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body * {
+            font-family: 'Jua';
+        }
+
+        div.buttons>button{
+            width: 100px;
+            background-color: orange;
+            color: blue;
+            margin: 3px;
+        }
+
+        div.buttons{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box1">
+        <img src="../mycar/mycar11.png" width="200">
+    </div>
+    <div class="box2">
+        <img src="../mycar/mycar10.png" width="200">
+    </div>
+    <div class="buttons">
+        <button type="button" id="btn1">border 변경</button>
+        <button type="button" id="btn2">사진 변경</button>
+        <br>
+        <button type="button" id="btn3">너비 변경</button>
+        <button type="button" id="btn4">원래대로</button>
+    </div>
+</div>
+<script>
+    let img1 = document.querySelector("div.container>div.box1>img");
+    let img2 = document.querySelector("div.container>div.box2>img");
+    document.getElementById("btn1").onclick = () => {
+        img1.style.borderStyle = "solid";
+        img1.style.borderColor = "green";
+        img1.style.borderWidth = "10px";
+
+        img2.style.borderStyle = "inset";
+        img2.style.borderColor = "gold";
+        img2.style.borderWidth = "10px";
+    };
+    document.getElementById("btn2").onclick = () => {
+        img1.setAttribute("src", "../mycar/mycar13.png");
+        img2.setAttribute("src", "../mycar/mycar15.png");
+    };
+    document.getElementById("btn3").onclick = () => {
+        img1.setAttribute("width", "300");
+        img2.setAttribute("width", "300");
+    };
+    // document.getElementById("btn4").onclick = () => {
+    document.querySelector("#btn4").onclick = () => { // 쿼리셀렉터에서 id로 얻을 수도 있다
+            img1.style.border = "none";
+            img2.style.border = "none";
+            img1.setAttribute("width", "200");
+            img2.setAttribute("width", "200");
+            img1.setAttribute("src", "../mycar/mycar11.png");
+            img2.setAttribute("src", "../mycar/mycar10.png");
+    };
+
+</script>
+</body>
+</html>
