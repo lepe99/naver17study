@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap"
+            rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+        body * {
+            font-family: 'Jua';
+        }
+    </style>
+</head>
+<body>
+<h5 class="alert alert-danger">jQuery Event</h5>
+<div class="photos">
+    <img src="../mycar/mycar13.png" width="200">
+    <img src="../mycar/mycar11.png" width="200">
+    <img src="../mycar/mycar7.png" width="200">
+</div>
+<script>
+    // 첫 번째 이미지에 마우스를 올리면 mycar15로 변경, 벗어나면 원래대로
+    $("div.photos>img:eq(0)").mouseover((e) => {
+        $(e.target).attr("src", "../mycar/mycar15.png");
+    });
+    
+    $("div.photos>img:eq(0)").mouseout((e) => {
+        $(e.target).attr("src", "../mycar/mycar13.png");
+    });
+    
+    
+    // hover = mouseover + mouseout 합쳐놓은 가상 이벤트
+    $("div.photos>img:eq(1)").hover((e) => {
+        $(e.target).attr("src", "../mycar/mycar15.png");
+    }, (e) => {
+        $(e.target).attr("src", "../mycar/mycar11.png");
+    });
+    
+    
+    // on : 이벤트 바인딩 / 이벤트 위임
+    // 이벤트 위임 시 처음 로딩 시 존재하지 않았던 나중에 추가되는 요소(동적 요소)들에 대해서도 이벤트 적용이 됨
+    // (직접 바인딩하는 이벤트들은 로딩 시 존재하지 않은 요소일 시 적용 안됨)
+    // 1.8 에서 live(deprecated) -> on으로 변경됨
+    
+    // document 객체에 mouseover 이벤트 위임으로 동적 요소 처리 가능한 방법
+    $(document).on("mouseover", "div.photos>img:eq(2)", (e) => {
+        $(e.target).attr("src", "../mycar/mycar15.png");
+    });
+    
+    // 직접 이벤트 바인딩 하는 방법 (동적 요소 처리 불가)
+    $("div.photos>img:eq(2)").on("mouseover", (e) => {
+        $(e.target).attr("src", "../mycar/mycar15.png");
+    });
+    
+    $("div.photos>img:eq(2)").on("mouseout", (e) => {
+        $(this).attr("src", "../mycar/mycar7.png");
+    });
+    
+    // img에 마우스를 올리면 border 설정, 벗어나면 border 해제
+    // selector의 결과가 배열이더라도 바로 이벤트 적용 가능
+    $("div.photos>img").hover((e) => {
+        $(e.target).css("border", "10px inset gold");
+    }, (e) => {
+        $(e.target).css("border", "none");
+    });
+</script>
+<hr>
+<div style="border: 1px solid black; width: 200px; height: 200px;" class="happy">
+    <button type="button" class="oneButton">버튼 추가</button>
+</div>
+<script>
+    $(".oneButton").click((e) => {
+        let s = `<button type="button" class="twoButton">새로운 버튼</button>`;
+        $(".happy").append(s);
+    });
+    
+    $(".twoButton").click((e) => { // 동적으로 추가된 요소 twoButton은 해당 방법으로 이벤트 발생 불가
+        alert("event");
+    });
+    
+    $(document).on("click", ".twoButton", (e) => { // on 으로 이벤트 위힘하는 식으로 해결
+        alert("event");
+    });
+</script>
+<hr>
+<img src="../photo/12.jpg" width="200" class="myPhoto">
+<script>
+    // .myphoto에 마우스 올리면 이미지 변경, 벗어나면 원래 이미지
+    // 클릭 시 alert 메세지
+    // bind : 여러 이벤트들을 묶어 한꺼번에 처리함
+    $(".myPhoto").bind({
+        click: () => {
+            alert("클릭 이벤트 발생");
+        },
+        mouseover: (e) => {
+            $(e.target).attr("src", "../photo/13.jpg");
+        },
+        mouseout: (e) => {
+            $(e.target).attr("src", "../photo/12.jpg");
+        }
+    });
+</script>
+</body>
+</html>

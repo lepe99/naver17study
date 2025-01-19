@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap"
+            rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+        body * {
+            font-family: 'Jua';
+        }
+        div.offcanvas-body>p {
+            cursor: pointer;
+        }
+        
+        div.offcanvas-body>p:hover {
+            background-color: lightgray;
+        }
+        
+    </style>
+</head>
+<body>
+<h5 class="alert alert-info">BS5 의 Offcanvas</h5>
+
+
+<!-- 사이드바 부분 / 나오는 위치 : start, end, top, bottom -->
+<div class="offcanvas offcanvas-end" id="foodsBar">
+    <div class="offcanvas-header">
+        <h1 class="offcanvas-title">메뉴 선택</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        <p src="../food/1.jpg" price="10000" data-bs-toggle="offcanvas">샌드위치</p>
+        <p src="../food/11.jpg" price="11000" data-bs-toggle="offcanvas">빙수</p>
+        <p src="../food/8.jpg" price="12000" data-bs-toggle="offcanvas">야채샌드위치</p>
+        <p src="../food/6.jpg" price="13000" data-bs-toggle="offcanvas">오므라이스</p>
+        <p src="../food/10.jpg" price="14000" data-bs-toggle="offcanvas">덮밥</p>
+    </div>
+</div>
+
+
+
+<div class="container-fluid mt-3" style="margin-left: 300px">
+    <h3>오늘부터 3일간 세일 이벤트</h3>
+    <p>모든 제품 20% 할인, 단 사이렌오더 불가</p>
+    <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#foodsBar">
+        메뉴 주문하기
+    </button>
+    <br><br>
+    <h2 class="title">제품 제목 나오게 하기</h2>
+    <figure style="width: 250px;" class="select-menu">
+        <img src="../food/11.jpg" width="250" border="2">
+        <figcaption style="text-align: center;">
+            <h3>12000원</h3>
+        </figcaption>
+    </figure>
+</div>
+
+<script>
+    $(".offcanvas-body>p").click((e) => {
+        // 1. src, price 값 가져오기
+        let src = $(e.target).attr("src");
+        let price = $(e.target).attr("price");
+        
+        // 2. figure.select-menu>img 에 src 적용
+        $("figure.select-menu>img").attr("src", src);
+        
+        // 3. figure.select-menu h1 에 price 적용
+        // 원래 가격은 빨간색, 취소선 / 옆에 검정색으로 20% 할인된 가격 넣기
+        let s = `<strike style="color: red; text-decoration: line-through">${price}</strike>
+            &nbsp;<s style="text-decoration: none">${price * 0.8}원</s>`;
+        $("figure.select-menu h3").html(s);
+        
+        // 4. h2.title 에 제품명 적용
+        $("h2.title").text($(e.target).text());
+    });
+</script>
+</body>
+</html>

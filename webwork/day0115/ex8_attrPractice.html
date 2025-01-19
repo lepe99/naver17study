@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap"
+            rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+        body * {
+            font-family: 'Jua';
+        }
+    </style>
+    <script>
+        $(() => {
+            // 첫번째, 마지막 변경
+            $("div.photos>img:first").attr("src", "../photo2/30.jpg");
+            $("div.photos>img:last").attr("src", "../photo2/30.jpg");
+            // 다른 방법
+            $("div.photos>img").first().attr("src", "../photo2/30.jpg");
+            $("div.photos>img").last().attr("src", "../photo2/30.jpg");
+            
+            // 짝, 홀수 번지 변경
+            $("div.photos>img:even").attr("src", "../photo2/14.jpg");
+            $("div.photos>img:odd").attr("src", "../photo2/12.jpg");
+            // 다른 방법
+            $("div.photos>img").even().attr("width", "100");
+            $("div.photos>img").odd().attr("width", "100");
+            
+            // 한번에 여러 속성 변경
+            $("div.photos>img:eq(1)").attr({
+                "width": "300",
+                "height": "320",
+                "src": "../photo2/26.jpg",
+                "title": "이미지 변경"
+            });
+            
+            // 1번 인덱스의 이미지 얻어 5번 이미지 변경
+            $("div.photos>img:eq(5)").attr("src", $("div.photos>img:eq(1)").attr("src"));
+            
+            // css와 attr 동시 변경
+            $("div.photos>img:eq(4)").css("border", "3px solid orange").attr("src", "../photo2/25.jpg");
+            $("div.photos>img:eq(2)").attr("src", "../photo2/22.jpg").css("border", "3px inset gray");
+        });
+    </script>
+</head>
+<body>
+<h4 class="alert alert-info">jQuery attr 함수 연습</h4>
+<div class="photos">
+    <script>
+        for (let i = 1; i <= 10; i++)
+            document.write(`<img src="../photo2/${i}.jpg" width="120">`);
+    </script>
+</div>
+</body>
+</html>
