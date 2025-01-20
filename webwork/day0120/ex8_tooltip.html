@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap"
+            rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+        body * {
+            font-family: 'Jua';
+        }
+        
+        div.myTooltip {
+            position: absolute;
+            line-height: 1.5;
+            color: black;
+            width: 200px;
+            background-color: #f90;
+            border: 2px solid white;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 30px;
+            opacity: 0.8;
+            display: none;
+        }
+    </style>
+    <script>
+        $(() => {
+            $('a').bind({
+                mousemove: (e) => {
+                    $("div.myTooltip").css({
+                        "left": e.pageX + "px",
+                        "top": e.pageY + "px"
+                    });
+                },
+                mouseover: (e) => {
+                    $("div.myTooltip").fadeIn('fast');
+                    
+                    $("div.myTooltip").html(`
+                         Java<br>HTML5<br>SpringBoot<br> MySQL`)
+                            .css("background-color", "#f90");
+                },
+                mouseout: (e) => {
+                    $("div.myTooltip").fadeOut('fast');
+                }
+            });
+            
+            //이벤트2
+            $("b.view").bind({
+                mousemove: (e) => {
+                    $("div.myTooltip").css({
+                        "left": e.pageX + "px",
+                        "top": e.pageY + "px"
+                    });
+                },
+                mouseover: (e) => {
+                    let text = $(e.target).text();
+                    let color = $(e.target).css("color");
+                    $("div.myTooltip").text(text).css("background-color", color);
+                    $("div.myTooltip").fadeIn('slow');
+                },
+                mouseout: (e) => {
+                    $("div.myTooltip").fadeOut('slow');
+                }
+            });
+            
+            //이벤트3
+            $("ol.today li").bind({
+                mousemove: (e) => {
+                    $("div.myTooltip").css({
+                        "left": e.pageX + "px",
+                        "top": e.pageY + "px"
+                    });
+                },
+                mouseover: (e) => {
+                    let fname = $(e.target).text();
+                    let photo = $(e.target).attr("photo");
+                    $("div.myTooltip").html(`
+                        <h6>${fname}</h6>
+                        <img src="${photo}" width=100 border="1">
+                        `).show();
+                },
+                mouseout: (e) => {
+                    $("div.myTooltip").hide();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="myTooltip">
+    Java<br>
+    HTML5<br>
+    SpringBoot<br>
+    MySQL<br>
+</div>
+
+<a style="font-size: 25px; cursor: pointer;">
+    집가고싶다집가고싶다집가고싶다집가고싶다집가고싶다집가고싶다
+</a>
+<hr>
+<pre style="font-size: 15px;">
+    집집집집집집집집집집집집집집집집집집집집
+    가가가가가 <b class="view" style="color: pink">가가가가가가</b> 가가가가가가
+    고고고고고고고고고고고고고고고
+    싶싶싶싶싶 <b class="view" style="color: turquoise;">싶싶싶싶</b> 싶싶싶싶싶싶싶싶싶싶싶
+    다다다다 <b class="view" style="color: lightgray">다다다다다다</b> 다다다다다다
+</pre>
+<hr>
+<ol class="today">
+    <li photo="../food/1.jpg">에그샌드위치</li>
+    <li photo="../food/11.jpg">망고빙수</li>
+    <li photo="../food/2.jpg">닭꼬치</li>
+    <li photo="../mycar/mycar13.png">핑크자동차</li>
+    <li photo="../mycar/mycar11.png">노랑자동차</li>
+</ol>
+</body>
+</html>
