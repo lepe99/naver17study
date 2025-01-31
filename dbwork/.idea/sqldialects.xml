@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/d54dace5-9ab7-49fa-8433-a83ebf41e76e/console_1.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/angel_0102.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/angel_plsql0102.sql" dialect="OracleSqlPlus" />
     <file url="file://$PROJECT_DIR$/study502_0102_2.sql" dialect="MySQL" />

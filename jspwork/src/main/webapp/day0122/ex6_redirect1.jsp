@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Arrays" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -19,11 +21,18 @@
     </style>
 </head>
 <body>
-<img src="../image/food/11.jpg" style="width: 100px;">
-<img src="../image/mycar/mycar12.png" style="width: 100px;">
-<img src="../image/photo/12.jpg" style="width: 100px;">
-<img src="../image/photo2/2.jpg" style="width: 100px;">
-<button type="button" ...>버튼</button>
-<h1>122</h1>
+<h1>redirect</h1>
+<%
+    List<String> list = Arrays.asList("red", "green", "blue", "orange");
+
+    // request에 저장
+    request.setAttribute("list", list);
+
+    // redirect로 이동한다면? 1. url이 변경된다. 2. request에 저장된 데이터는 사라진다.
+    // forward로 이동한다면? 1. url이 변경되지 않는다. 2. request에 저장된 데이터는 유지된다.
+    // ex6_redirect2.jsp로 redirect
+    response.sendRedirect("ex6_redirect2.jsp");
+%>
+<h2>list 갯수 : <%= list.size() %></h2>
 </body>
 </html>

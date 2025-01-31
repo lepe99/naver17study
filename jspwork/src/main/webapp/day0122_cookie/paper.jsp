@@ -19,11 +19,22 @@
     </style>
 </head>
 <body>
-<img src="../image/food/11.jpg" style="width: 100px;">
-<img src="../image/mycar/mycar12.png" style="width: 100px;">
-<img src="../image/photo/12.jpg" style="width: 100px;">
-<img src="../image/photo2/2.jpg" style="width: 100px;">
-<button type="button" ...>버튼</button>
-<h1>122</h1>
+<ul>
+    <li>
+        <a href="news1.jsp">
+            전 한국공항공사 사장 숨진채 발견…무안공항 개량공사 당시 역임
+        </a>
+    </li>
+    <li>
+        <a href="news2.jsp">
+            “대통령님, 제발 자비를 베풀어 주세요”…트럼프 반응이 ‘역시나’ [현장영상]
+        </a>
+    </li>
+    <li>
+        <a href="news3.jsp">
+            "전한길 선생님이 어쩌다 이렇게…" 집단 성토 나선 제자들
+        </a>
+    </li>
+</ul>
 </body>
 </html>

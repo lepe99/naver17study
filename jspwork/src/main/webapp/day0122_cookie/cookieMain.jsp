@@ -1,3 +1,5 @@
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -18,12 +20,33 @@
         }
     </style>
 </head>
+<%
+    boolean isLogin = false;
+    // 현재 브라우저에 저장된 모든 쿠키 값 얻기, 없을 경우 null 반환
+    Cookie[] cookies = request.getCookies();
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            // 쿠키 이름이 loginOk이고 값이 true일 경우
+            if (cookie.getName().equals("loginOk") && cookie.getValue().equals("true")) {
+                isLogin = true;
+                break;
+            }
+        }
+    }
+%>
 <body>
-<img src="../image/food/11.jpg" style="width: 100px;">
-<img src="../image/mycar/mycar12.png" style="width: 100px;">
-<img src="../image/photo/12.jpg" style="width: 100px;">
-<img src="../image/photo2/2.jpg" style="width: 100px;">
-<button type="button" ...>버튼</button>
-<h1>122</h1>
+<%
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+%>
+<h2><%= sdf.format(new Date()) %> : 오늘의 기사 모음</h2>
+<hr>
+<% if (isLogin) { %>
+<jsp:include page="cookieLogout.jsp"/>
+<% } else { %>
+<jsp:include page="cookieLogin.jsp"/>
+<% } %>
+<hr>
+<h3 class="alert alert-danger">오늘의 주요 뉴스</h3>
+<jsp:include page="paper.jsp"/>
 </body>
 </html>

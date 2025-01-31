@@ -18,12 +18,14 @@
         }
     </style>
 </head>
+<%
+    String isLogin = (String) session.getAttribute("isLogin");
+    if (isLogin != null && isLogin.equals("true")) { %>
+        <jsp:include page="logout.jsp"/>
+    <% } else { %>
+        <jsp:include page="login.jsp"/>
+    <% } %>
 <body>
-<img src="../image/food/11.jpg" style="width: 100px;">
-<img src="../image/mycar/mycar12.png" style="width: 100px;">
-<img src="../image/photo/12.jpg" style="width: 100px;">
-<img src="../image/photo2/2.jpg" style="width: 100px;">
-<button type="button" ...>버튼</button>
-<h1>122</h1>
+
 </body>
 </html>

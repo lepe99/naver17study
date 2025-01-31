@@ -18,12 +18,13 @@
         }
     </style>
 </head>
+<%
+    String message = request.getParameter("message");
+    String myCar = request.getParameter("myCar");
+%>
 <body>
-<img src="../image/food/11.jpg" style="width: 100px;">
-<img src="../image/mycar/mycar12.png" style="width: 100px;">
-<img src="../image/photo/12.jpg" style="width: 100px;">
-<img src="../image/photo2/2.jpg" style="width: 100px;">
-<button type="button" ...>버튼</button>
-<h1>122</h1>
+<h3>오늘의 메세지 : <%= message %></h3>
+<h4>myCar</h4>
+<img src="../image/mycar/<%= myCar %>" alt="myCar" width="200">
 </body>
 </html>

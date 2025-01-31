@@ -19,11 +19,29 @@
     </style>
 </head>
 <body>
-<img src="../image/food/11.jpg" style="width: 100px;">
-<img src="../image/mycar/mycar12.png" style="width: 100px;">
-<img src="../image/photo/12.jpg" style="width: 100px;">
-<img src="../image/photo2/2.jpg" style="width: 100px;">
-<button type="button" ...>버튼</button>
-<h1>122</h1>
+<div style="margin: 30px">
+    <form action="./ex3_action.jsp" method="get"><!-- 기본값은 get -->
+        <table class="table table-bordered" style="width: 300px;">
+            <tr>
+                <th width="100">페이지번호</th>
+                <td>
+                    <input type="number" name="pageNum" value="1">
+                </td>
+            </tr>
+            <tr>
+                <th width="100">검색단어</th>
+                <td>
+                    <input type="text" name="search">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="submit">서버에 전송</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</div>
 </body>
 </html>

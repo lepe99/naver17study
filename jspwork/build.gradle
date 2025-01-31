@@ -23,7 +23,6 @@ tasks.withType(JavaCompile) {
 
 dependencies {
     compileOnly('jakarta.platform:jakarta.jakartaee-web-api:11.0.0-M4')
-
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }

@@ -19,11 +19,10 @@
     </style>
 </head>
 <body>
-<img src="../image/food/11.jpg" style="width: 100px;">
-<img src="../image/mycar/mycar12.png" style="width: 100px;">
-<img src="../image/photo/12.jpg" style="width: 100px;">
-<img src="../image/photo2/2.jpg" style="width: 100px;">
-<button type="button" ...>버튼</button>
-<h1>122</h1>
+<h5 class="alert alert-info">include 시 데이터 넘기기</h5>
+<jsp:include page="ex5_include3.jsp">
+    <jsp:param value="오늘은 수요일" name="message"/>
+    <jsp:param value="mycar11.png" name="myCar"/>
+</jsp:include>
 </body>
 </html>

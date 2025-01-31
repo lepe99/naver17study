@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -19,11 +21,17 @@
     </style>
 </head>
 <body>
-<img src="../image/food/11.jpg" style="width: 100px;">
-<img src="../image/mycar/mycar12.png" style="width: 100px;">
-<img src="../image/photo/12.jpg" style="width: 100px;">
-<img src="../image/photo2/2.jpg" style="width: 100px;">
-<button type="button" ...>버튼</button>
-<h1>122</h1>
+<%
+    // request에 저장된 데이터를 가져온다.
+    List<String> list = (ArrayList<String>) request.getAttribute("list");
+
+    // redirect로 이동했기 때문에 request에 저장된 데이터는 사라진다.
+    if (list == null) {
+        out.print("<h1>list 없음</h1>");
+    } else {
+        out.print("<h1>list 있음</h1>");
+        out.print("<h2>list 갯수 : " + list.size() + "</h2>");
+    }
+%>
 </body>
 </html>

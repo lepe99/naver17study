@@ -19,11 +19,10 @@
     </style>
 </head>
 <body>
-<img src="../image/food/11.jpg" style="width: 100px;">
-<img src="../image/mycar/mycar12.png" style="width: 100px;">
-<img src="../image/photo/12.jpg" style="width: 100px;">
-<img src="../image/photo2/2.jpg" style="width: 100px;">
-<button type="button" ...>버튼</button>
-<h1>122</h1>
+<h5 class="alert alert-info">jsp:include 이용하여 다른 파일의 결과 포함시키기</h5>
+<hr>
+<jsp:include page="ex1_gugudan.jsp"/>
+<hr>
+<jsp:include page="../day0121/ex5_foodList.jsp"/>
 </body>
 </html>

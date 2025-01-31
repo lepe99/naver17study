@@ -16,14 +16,38 @@
         body * {
             font-family: 'Jua', sans-serif;
         }
+
+        .tab th {
+            background-color: black;
+            color: yellow;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-<img src="../image/food/11.jpg" style="width: 100px;">
-<img src="../image/mycar/mycar12.png" style="width: 100px;">
-<img src="../image/photo/12.jpg" style="width: 100px;">
-<img src="../image/photo2/2.jpg" style="width: 100px;">
-<button type="button" ...>버튼</button>
-<h1>122</h1>
+<div style="margin: 10px;">
+    <table class="table table-bordered tab" style="width: 90%;">
+        <caption align="top"><h3><b>[구구단]</b></h3></caption>
+        <tr>
+            <%
+                for (int dan = 2; dan <= 9; dan++) {%>
+            <th><%=dan%>단</th>
+            <%
+                }
+            %>
+        </tr>
+        <%
+            for (int i = 1; i <= 9; i++) {%>
+        <tr align="center">
+            <%for (int dan = 2; dan <= 9; dan++) {%>
+            <td><%=dan %>X<%=i %>=<%=dan * i %>
+            </td>
+            <%}%>
+        </tr>
+        <%
+            }
+        %>
+    </table>
+</div>
 </body>
 </html>

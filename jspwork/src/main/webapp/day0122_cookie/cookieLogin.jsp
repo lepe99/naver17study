@@ -19,11 +19,12 @@
     </style>
 </head>
 <body>
-<img src="../image/food/11.jpg" style="width: 100px;">
-<img src="../image/mycar/mycar12.png" style="width: 100px;">
-<img src="../image/photo/12.jpg" style="width: 100px;">
-<img src="../image/photo2/2.jpg" style="width: 100px;">
-<button type="button" ...>버튼</button>
-<h1>122</h1>
+<form action="loginAction.jsp" method="post">
+    <div class="input-group" style="width: 300px;">
+        <span>암호입력&nbsp;</span>
+        <input type="text" name="pwd" class="form-control">
+        <button type="submit" class="btn btn-danger btn-sm">로그인</button>
+    </div>
+</form>
 </body>
 </html>

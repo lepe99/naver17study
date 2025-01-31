@@ -19,11 +19,10 @@
     </style>
 </head>
 <body>
-<img src="../image/food/11.jpg" style="width: 100px;">
-<img src="../image/mycar/mycar12.png" style="width: 100px;">
-<img src="../image/photo/12.jpg" style="width: 100px;">
-<img src="../image/photo2/2.jpg" style="width: 100px;">
-<button type="button" ...>버튼</button>
-<h1>122</h1>
+<div style="width: 400px; text-align: right;" class="input-group">
+    <h5>비트캠프님이 로그인했습니다&nbsp;</h5>
+    <button type="button" class="btn btn-danger btn-sm"
+            onclick="location.href='logoutAction.jsp'">로그아웃</button>
+</div>
 </body>
 </html>

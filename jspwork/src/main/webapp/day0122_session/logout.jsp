@@ -19,11 +19,14 @@
     </style>
 </head>
 <body>
-<img src="../image/food/11.jpg" style="width: 100px;">
-<img src="../image/mycar/mycar12.png" style="width: 100px;">
-<img src="../image/photo/12.jpg" style="width: 100px;">
-<img src="../image/photo2/2.jpg" style="width: 100px;">
-<button type="button" ...>버튼</button>
-<h1>122</h1>
+<div style="margin: 30px;">
+    <b style="font-size: 25px;">
+        비트캠프님이 로그인 했습니다.
+    </b>
+    <button class="btn btn-danger btn-sm" style="margin-left: 30px;"
+            onclick="location.href='logoutAction.jsp'">로그아웃</button>
+    <hr>
+    <jsp:include page="../day0122/ex2_divFoodList.jsp"/>
+</div>
 </body>
 </html>

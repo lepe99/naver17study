@@ -18,12 +18,15 @@
         }
     </style>
 </head>
+<%
+    // get 방식으로 전달된 데이터를 받는다. 한글 안깨짐 (Tomcat 8.5 이상)
+    String pageNum = request.getParameter("pageNum");
+    String search = request.getParameter("search");
+%>
 <body>
-<img src="../image/food/11.jpg" style="width: 100px;">
-<img src="../image/mycar/mycar12.png" style="width: 100px;">
-<img src="../image/photo/12.jpg" style="width: 100px;">
-<img src="../image/photo2/2.jpg" style="width: 100px;">
-<button type="button" ...>버튼</button>
-<h1>122</h1>
+<h5>
+    페이지번호 : <%= pageNum %><br>
+    검색단어 : <%= search %>
+</h5>
 </body>
 </html>

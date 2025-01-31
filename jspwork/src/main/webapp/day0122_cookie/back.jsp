@@ -19,11 +19,11 @@
     </style>
 </head>
 <body>
-<img src="../image/food/11.jpg" style="width: 100px;">
-<img src="../image/mycar/mycar12.png" style="width: 100px;">
-<img src="../image/photo/12.jpg" style="width: 100px;">
-<img src="../image/photo2/2.jpg" style="width: 100px;">
-<button type="button" ...>버튼</button>
-<h1>122</h1>
+<button type="submit" class="btn btn-danger btn-sm" id="back">뒤로가기</button>
+<script>
+    document.getElementById("back").addEventListener("click", () => {
+        history.back();
+    });
+</script>
 </body>
 </html>

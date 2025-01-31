@@ -1,3 +1,6 @@
+<%@ page import="test.data.FoodDto" %>
+<%@ page import="test.day0121.FoodDataList" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -16,14 +19,48 @@
         body * {
             font-family: 'Jua', sans-serif;
         }
+
+        div.box{
+            float: left;
+            width: 150px;
+            height:auto;
+            margin: 5px;
+            border:2px solid gray;
+            border-radius: 20px;
+            text-align: center;
+            background-color: lightgray;
+            padding: 5px;
+        }
+
+        div.box>figure>img{
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+        }
+
+        div.box>figure>figcaption{
+            text-align: center;
+        }
     </style>
 </head>
+<%
+    FoodDataList dataList=new FoodDataList();
+    List<FoodDto> list=dataList.getAllData();
+%>
 <body>
-<img src="../image/food/11.jpg" style="width: 100px;">
-<img src="../image/mycar/mycar12.png" style="width: 100px;">
-<img src="../image/photo/12.jpg" style="width: 100px;">
-<img src="../image/photo2/2.jpg" style="width: 100px;">
-<button type="button" ...>버튼</button>
-<h1>122</h1>
+<%
+    for(FoodDto dto:list)
+    {%>
+<div class="box">
+    <figure>
+        <img src="../image/food/<%=dto.getFoodPhoto() %>">
+        <figcaption>
+            <b><%=dto.getFoodName() %></b><br>
+            <%=dto.getFoodPrice() %>원
+        </figcaption>
+    </figure>
+</div>
+<%}
+%>
 </body>
 </html>
