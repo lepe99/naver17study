@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+    <shop code="A100">
+        <product>화이트원피스</product>
+        <photo>../image/photo2/2.jpg</photo>
+        <price>23000</price>
+    </shop>
+    <shop code="A200">
+        <product>스카프</product>
+        <photo>../image/photo2/10.jpg</photo>
+        <price>12000</price>
+    </shop>
+    <shop code="A300">
+        <product>머리끈</product>
+        <photo>../image/photo2/26.jpg</photo>
+        <price>67000</price>
+    </shop>
+    <shop code="A400">
+        <product>레이스자켓</product>
+        <photo>../image/photo2/31.jpg</photo>
+        <price>55000</price>
+    </shop>
+</list>
