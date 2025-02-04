@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <guest name="이미자">
+        <avatar>../image/photo2/3.jpg</avatar>
+        <message>안녕하세요</message>
+        <birth>2001-12-20</birth>
+    </guest>
+    <guest name="손지나">
+        <avatar>../image/photo2/30.jpg</avatar>
+        <message>추워요</message>
+        <birth>1998-11-11</birth>
+    </guest>
+    <guest name="박범">
+        <avatar>../image/photo2/8.jpg</avatar>
+        <message>안아줘요</message>
+        <birth>1978-08-11</birth>
+    </guest>
+    <guest name="윤미래">
+        <avatar>../image/photo2/28.jpg</avatar>
+        <message>입춘이에요</message>
+        <birth>2005-02-04</birth>
+    </guest>
+</data>

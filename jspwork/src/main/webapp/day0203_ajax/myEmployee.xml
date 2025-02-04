@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<board>
+    <emp no="1">
+        <name>캐서린</name>
+        <dept>홍보부</dept>
+        <pay sudang="34000">250000</pay>
+    </emp>
+    <emp no="2">
+        <name>마이클</name>
+        <dept>교육부</dept>
+        <pay sudang="20000">120000</pay>
+    </emp>
+    <emp no="3">
+        <name>캔디</name>
+        <dept>관리부</dept>9
+        <pay sudang="19000">150000</pay>
+    </emp>
+    <emp no="4">
+        <name>테리우스</name>
+        <dept>인사부</dept>
+        <pay sudang="35000">450000</pay>
+    </emp>
+</board>

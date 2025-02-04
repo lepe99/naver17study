@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>502 study</title>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu
+            &family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap"
+            rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+        body * {
+            font-family: 'Jua', sans-serif;
+        }
+        
+        .tab1 thead tr th {
+            background-color: orange;
+            color: blue;
+            text-align: center;
+        }
+        
+        .tab2 thead tr th {
+            background-color: pink;
+            color: gray;
+            text-align: center;
+        }
+        
+        img {
+            width: 200px;
+            height: 260px;
+        }
+        
+        .tab3, .tab4 {
+            width: 500px;
+        }
+        
+        
+    </style>
+</head>
+<body>
+<div style="margin: 20px;">
+    <button id="btn1">xml 데이터 읽기</button>
+    <button id="btn2">json 데이터 읽기</button>
+    <br>
+    <button id="btn3">question xml read</button>
+    <button id="btn4">question json read</button>
+    <div class="result" style="margin-top: 30px; width:400px;">111</div>
+    
+    <script type="text/javascript">
+        $("#btn1").click(() => {
+            $.ajax({
+                type: "get",
+                dataType: "xml",
+                url: "./myEmployee.xml",
+                success: (data) => {
+                    let s = "";
+                    s = `
+					<table class="table table-bordered tab1">
+						<thead>
+							<tr>
+								<th width="50">번호</th>
+								<th width="80">이름</th>
+								<th width="100">부서</th>
+								<th width="100">급여</th>
+								<th width="100">수당</th>
+							</tr>
+						</thead>
+						<tbody>
+				`;
+                    
+                    //반복문
+                    $(data).find("emp").each(function (i, e) {
+                        s += `
+						<tr style="text-align: center;">
+							<td>${$(e).attr("no")}</td>
+							<td>${$(e).find("name").text()}</td>
+							<td>${$(e).find("dept").text()}</td>
+							<td>${$(e).find("pay").text()}</td>
+							<td>${$(e).find("pay").attr("sudang")}</td>
+					    </tr>
+					`;
+                    });
+                    
+                    s += "</tbody></table>";
+                    $(".result").html(s);
+                }
+            });
+        });
+        
+        $("#btn2").click(() => {
+            $.ajax({
+                url: "./myPerson.json",
+                type: "get",
+                dataType: "json",
+                success: (data) => {
+                    let s = "";
+                    s = `
+                    <table class="table table-bordered tab3">
+						<thead>
+							<tr>
+								<th width="100">이름</th>
+								<th width="100">나이</th>
+								<th>취미</th>
+							</tr>
+						</thead>
+						<tbody>
+                    `;
+                    
+                    // 반복문
+                    $.each(data, (i, e) => {
+                        s += `
+                        <tr>
+                            <td>${e.name}</td>
+                            <td>${e.age == null ? "나이모름" : e.age}</td>
+                            <td>${e.hobby == null ? "없음" : hobby()}</td>
+                        </tr>
+                        `;
+                        
+                        function hobby() {
+                            let h = "";
+                            $.each(e.hobby, (i, e) => {
+                                h += `[${i} : ${e}] `;
+                            });
+                            return h;
+                        }
+                    });
+
+                    
+                    s += `</tbody></table>`;
+                    $(".result").html(s);
+                }
+            });
+        });
+        
+        $("#btn3").click(() => {
+            $.ajax({
+                url: "question.xml",
+                type: "get",
+                dataType: "xml",
+                success: (data) => {
+                    let s = `<table class="table table-bordered tab3">`;
+                    $(data).find("guest").each((i, e) => {
+                        s += `
+                        <tr>
+                            <td style="width: 200px;"><img src="${$(e).find("avatar").text()}"></td>
+                            <td style="width: 300px;">
+                                <span>이름 : ${$(e).attr("name")}</span><br>
+                                <span>생년월일 : ${$(e).find("birth").text()}</span><br>
+                                <span>메세지 : ${$(e).find("message").text()}</span><br>
+                            </td>
+                        </tr>
+                        `;
+                    });
+                    s += `</table>`;
+                    $(".result").html(s);
+                }
+            });
+        });
+        
+        $("#btn4").click(() => {
+            $.ajax({
+                url: "question.json",
+                type: "get",
+                dataType: "json",
+                success: (data) => {
+                    let s = `<table class="table table-bordered tab4">`;
+                    $(data).each((i, e) => {
+                        s += `
+                        <tr>
+                            <td style="width: 200px;"><img src="${e.photo}"></td>
+                            <td style="width: 300px;">
+                                <span>이름 : ${e.name}</span><br>
+                                <span>나이 : ${e.age}</span><br><br>
+                                <span>점수 : <br>${e.score == null ? "미응시" : scoreList()}</span><br>
+                                <span>총합 : ${e.score == null ? "-" : scoreSum()}</span><br>
+                            </td>
+                        </tr>
+                        `;
+                        
+                        function scoreList() {
+                            let h = "";
+                            $.each(e.score, (i, e) => {
+                                h += `${i + 1}과목 : ${e}점 <br>`;
+                            });
+                            return h;
+                        }
+                        
+                        function scoreSum() {
+                            let sum = 0;
+                            $.each(e.score, (i, e) => {
+                                sum += e;
+                            });
+                            return sum;
+                        }
+                    });
+                    s += `</table>`;
+                    $(".result").html(s);
+                }
+            });
+        });
+    </script>
+</div>
+</body>
+</html>

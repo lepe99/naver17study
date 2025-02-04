@@ -1,0 +1,5 @@
+[
+  {"name": "김말자", "score": [90, 89, 100], "age": "21세", "photo": "../image/photo/11.jpg"},
+  {"name": "이영숙", "score": [50, 69, 90], "age": "37세", "photo": "../image/photo/10.jpg"},
+  {"name": "김말숙", "score": [80, 69, 20], "age": "27세", "photo": "../image/photo/9.jpg"}
+]
