@@ -13,7 +13,7 @@ public class MemoDao {
     MySQLConnect db = new MySQLConnect();
     
     public void insertData(MemoDto dto) {
-        Connection conn = db.getConnection();
+        Connection conn = db.getNCloudConnection();
         PreparedStatement ps = null;
         
         String sql = """
@@ -35,7 +35,7 @@ public class MemoDao {
     }
     
     public void deleteData(int idx) {
-        Connection conn = db.getConnection();
+        Connection conn = db.getNCloudConnection();
         PreparedStatement ps = null;
         
         String sql = "delete from ajaxmemo where idx = ?";
@@ -52,7 +52,7 @@ public class MemoDao {
     }
     
     public void updateData(MemoDto dto) {
-        Connection conn = db.getConnection();
+        Connection conn = db.getNCloudConnection();
         PreparedStatement ps = null;
         
         String sql = """
@@ -77,7 +77,7 @@ public class MemoDao {
     
     public List<MemoDto> getAllData(String search) {
         List<MemoDto> list = new ArrayList<>();
-        Connection conn = db.getConnection();
+        Connection conn = db.getNCloudConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         
