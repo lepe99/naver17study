@@ -75,22 +75,27 @@ public class MemoDao {
         }
     }
     
-    public List<MemoDto> getAllData(String search) {
+    public List<MemoDto> getAllData(int idx, String search) {
         List<MemoDto> list = new ArrayList<>();
         Connection conn = db.getNCloudConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         
-        String sql = """
-                select * from ajaxmemo
-                where nickname like %?%
-                order by idx desc
-                """;
+        String sql = "select * from ajaxmemo ";
+        
+        if (idx != 0) {
+            sql += "where idx = ? ";
+        } else if (search != null) {
+            sql += "where nickname like ? ";
+        }
+        
+        sql += "order by idx desc";
         
         try {
             ps = conn.prepareStatement(sql);
-            if (search == null) ps.setString(1, "");
-            else ps.setString(1, search);
+            if (idx != 0) ps.setInt(1, idx);
+            else if (search != null) ps.setString(1, "%" + search + "%");
+            
             rs = ps.executeQuery();
             
             while (rs.next()) {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<%@ page import="shop.data.ShopDao" %>
-<%@ page import="shop.data.ShopDto" %>
+<%@ page import="shopLocal.data.ShopDao" %>
+<%@ page import="shopLocal.data.ShopDto" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page language="java" contentType="text/xml; charset=UTF-8" pageEncoding="UTF-8" %>

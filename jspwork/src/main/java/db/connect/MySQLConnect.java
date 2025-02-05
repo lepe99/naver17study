@@ -47,7 +47,6 @@ public class MySQLConnect {
             ps.close();
             conn.close();
         } catch (SQLException | NullPointerException e) {
-            throw new RuntimeException(e);
         }
     }
     
@@ -57,7 +56,6 @@ public class MySQLConnect {
             ps.close();
             conn.close();
         } catch (SQLException | NullPointerException e) {
-            throw new RuntimeException(e);
         }
     }
 }

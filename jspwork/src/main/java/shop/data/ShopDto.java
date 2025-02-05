@@ -3,27 +3,13 @@ package shop.data;
 import java.sql.Timestamp;
 
 public class ShopDto {
-    private int idx;
-    private String prdt;
     private int num;
-    private int price;
-    private Timestamp inDate;
-    
-    public int getIdx() {
-        return idx;
-    }
-    
-    public void setIdx(int idx) {
-        this.idx = idx;
-    }
-    
-    public String getPrdt() {
-        return prdt;
-    }
-    
-    public void setPrdt(String prdt) {
-        this.prdt = prdt;
-    }
+    private String prdtName;
+    private String prdtColor;
+    private int prdtCnt;
+    private int prdtPrice;
+    private String prdtImg;
+    private String prdtDateIn;
     
     public int getNum() {
         return num;
@@ -33,19 +19,51 @@ public class ShopDto {
         this.num = num;
     }
     
-    public int getPrice() {
-        return price;
+    public String getPrdtName() {
+        return prdtName;
     }
     
-    public void setPrice(int price) {
-        this.price = price;
+    public void setPrdtName(String prdtName) {
+        this.prdtName = prdtName;
     }
     
-    public Timestamp getInDate() {
-        return inDate;
+    public String getPrdtColor() {
+        return prdtColor;
     }
     
-    public void setInDate(Timestamp inDate) {
-        this.inDate = inDate;
+    public void setPrdtColor(String prdtColor) {
+        this.prdtColor = prdtColor;
+    }
+    
+    public int getPrdtCnt() {
+        return prdtCnt;
+    }
+    
+    public void setPrdtCnt(int prdtCnt) {
+        this.prdtCnt = prdtCnt;
+    }
+    
+    public int getPrdtPrice() {
+        return prdtPrice;
+    }
+    
+    public void setPrdtPrice(int prdtPrice) {
+        this.prdtPrice = prdtPrice;
+    }
+    
+    public String getPrdtImg() {
+        return prdtImg;
+    }
+    
+    public void setPrdtImg(String prdtImg) {
+        this.prdtImg = prdtImg;
+    }
+    
+    public String getPrdtDateIn() {
+        return prdtDateIn;
+    }
+    
+    public void setPrdtDateIn(String prdtDateIn) {
+        this.prdtDateIn = prdtDateIn;
     }
 }
