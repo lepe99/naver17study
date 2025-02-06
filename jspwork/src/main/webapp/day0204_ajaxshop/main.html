@@ -102,28 +102,29 @@
                 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form id="addForm" action="insert.jsp" method="post" style="text-align: center;">
+                    <form id="addForm" style="text-align: center;">
                         <img src="" class="thumbnail img-thumbnail" style="width: 200px; float: left;">
                         <div style="width: 250px; text-align: center; float: right;">
                             <select class="form-select imageList" style="margin-bottom: 10px;" name="prdtImg"></select>
                             <div class="input-group">
                                 상품명&nbsp;
                                 <input type="text" name="prdtName" id="addPrdtName" class="form-control"
-                                       placeholder="상품명">
+                                       placeholder="상품명" required>
                             </div>
                             <div class="input-group">
                                 색상&nbsp;&nbsp;&nbsp;&nbsp;
                                 <input type="text" name="prdtColor" id="addPrdtColor" class="form-control"
-                                       placeholder="색상">
+                                       placeholder="색상" required>
                             </div>
                             <div class="input-group">
                                 수량&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="text" name="prdtCnt" id="addPrdtCnt" class="form-control" placeholder="수량">
+                                <input type="text" name="prdtCnt" id="addPrdtCnt" class="form-control"
+                                       placeholder="수량" required>
                             </div>
                             <div class="input-group">
                                 가격&nbsp;&nbsp;&nbsp;&nbsp;
                                 <input type="text" name="prdtPrice" id="addPrdtPrice" class="form-control"
-                                       placeholder="가격">
+                                       placeholder="가격" required>
                             </div>
                             <div class="input-group">
                                 입고일&nbsp;
@@ -157,7 +158,7 @@
                     
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <form id="modForm" action="update.jsp" method="post" style="text-align: center;">
+                        <form id="modForm" style="text-align: center;">
                             <input type="hidden" name="num" id="modNum">
                             <img src="" class="thumbnail img-thumbnail" style="width: 200px; float: left;">
                             <div style="width: 250px; text-align: center; float: right;">
@@ -166,22 +167,22 @@
                                 <div class="input-group">
                                     상품명&nbsp;
                                     <input type="text" name="prdtName" id="modPrdtName" class="form-control"
-                                           placeholder="상품명">
+                                           placeholder="상품명" required>
                                 </div>
                                 <div class="input-group">
                                     색상&nbsp;&nbsp;&nbsp;&nbsp;
                                     <input type="text" name="prdtColor" id="modPrdtColor" class="form-control"
-                                           placeholder="색상">
+                                           placeholder="색상" required>
                                 </div>
                                 <div class="input-group">
                                     수량&nbsp;&nbsp;&nbsp;&nbsp;
                                     <input type="text" name="prdtCnt" id="modPrdtCnt" class="form-control"
-                                           placeholder="수량">
+                                           placeholder="수량" required>
                                 </div>
                                 <div class="input-group">
                                     가격&nbsp;&nbsp;&nbsp;&nbsp;
                                     <input type="text" name="prdtPrice" id="modPrdtPrice" class="form-control"
-                                           placeholder="가격">
+                                           placeholder="가격" required>
                                 </div>
                                 <div class="input-group">
                                     입고일&nbsp;

@@ -118,6 +118,13 @@ $(document).ready(() => {
         // 상세 페이지로 이동
         location.href = `detail.jsp?num=${num}`;
     });
+
+    // grid에서 이미지 클릭 시
+    $(document).on("click", ".gridImg", (e) => {
+        let num = $(e.target).attr("num");
+        // 상세 페이지로 이동
+        location.href = `detail.jsp?num=${num}`;
+    });
 });
 
 // select에 들어갈 이미지 리스트
@@ -159,7 +166,7 @@ function writeData(data) {
         <tr>
             <th style="width: 50px">번호</th>
             <th style="width: 160px">상품명</th>
-            <th style="width: 50px">색상</th>
+            <th style="width: 80px">색상</th>
             <th style="width: 50px">수량</th>
             <th style="width: 80px">단가</th>
             <th>상세보기</th>
@@ -172,7 +179,7 @@ function writeData(data) {
         grid += `
         <figure>
         <div style="float: left; margin: 5px;">
-            <img src="${e.prdtImg}" width="100">
+            <img src="${e.prdtImg}" style="width: 100px; cursor: pointer;" num="${e.num}" class="gridImg">
         </div>
         <figcaption>
             <h6>상품명: ${e.prdtName}</h6>
