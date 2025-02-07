@@ -1,3 +1,4 @@
+// MySQLConnect.java
 package util;
 
 import java.sql.*;
@@ -9,6 +10,9 @@ public class MySQLConnect {
     String username = "study";
     String password = "*!%bitcamp815";
 
+    /**
+     * MySQLConnect 생성자
+     */
     public MySQLConnect() {
         try {
             Class.forName(MYSQL_DRIVER);
@@ -17,6 +21,10 @@ public class MySQLConnect {
         }
     }
     
+    /**
+     * nCloud mysql 서버 접속
+     * @return Connection
+     */
     public Connection getNCloudConnection() {
         Connection conn = null;
         try {
@@ -27,6 +35,11 @@ public class MySQLConnect {
         return conn;
     }
     
+    /**
+     * db close
+     * @param ps PreparedStatement
+     * @param conn Connection
+     */
     public void dbClose(PreparedStatement ps, Connection conn) {
         try {
             ps.close();
@@ -35,6 +48,12 @@ public class MySQLConnect {
         }
     }
     
+    /**
+     * db close
+     * @param rs ResultSet
+     * @param ps PreparedStatement
+     * @param conn Connection
+     */
     public void dbClose(ResultSet rs, PreparedStatement ps, Connection conn) {
         try {
             rs.close();

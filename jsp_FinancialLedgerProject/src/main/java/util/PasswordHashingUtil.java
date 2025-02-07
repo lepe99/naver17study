@@ -1,3 +1,4 @@
+// PasswordHashingUtil.java
 package util;
 
 import java.security.MessageDigest;
@@ -7,7 +8,10 @@ import java.util.Base64;
 
 public class PasswordHashingUtil {
     
-    // 솔트 생성
+    /**
+     * 솔트 생성
+     * @return Base64로 인코딩된 솔트
+     */
     public static String generateSalt() {
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[16];
@@ -15,7 +19,12 @@ public class PasswordHashingUtil {
         return Base64.getEncoder().encodeToString(salt); // 솔트를 Base64로 인코딩하여 반환
     }
     
-    // 비밀번호 해싱
+    /**
+     * 비밀번호 해싱
+     * @param password 비밀번호
+     * @param salt 솔트
+     * @return 해싱된 비밀번호
+     */
     public static String hashPassword(String password, String salt) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256"); // SHA-256 해시 알고리즘 사용

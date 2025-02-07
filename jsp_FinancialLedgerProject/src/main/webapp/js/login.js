@@ -1,3 +1,4 @@
+// login.js
 $(document).ready(function() {
 
     // 로그인 버튼 클릭 시
@@ -8,7 +9,7 @@ $(document).ready(function() {
 
     // 회원가입 버튼 클릭 시
     $("#btnRegister").click(() => {
-        location.href = "register.jsp";
+        location.href = "register.html";
     });
 });
 
@@ -20,7 +21,7 @@ function login() {
         dataType: "json",
         data: $("#loginForm").serialize(),
         success: (response) => {
-            if (response.success) location.href = "index.jsp";
+            if (response.success) location.href = "../main/main.html";
             else alert(response.message);
         },
         error: () => {

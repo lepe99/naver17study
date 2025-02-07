@@ -2,15 +2,17 @@ create table studydb.transactions
 (
     id               int auto_increment primary key,                                  # id
     user_id          smallint                   not null,                             # 사용자 id
-    transaction_date datetime                   not null,                             # 거래일
+    recurring_id     int       default 0,                                             # 반복 거래 id
+    transaction_date date                       not null,                             # 거래일
     amount           int                        not null,                             # 금액
-    description      varchar(255),                                                    # 거래 내용
+    description      varchar(255)               not null,                             # 거래 내용
     transaction_type enum ('income', 'expense') not null,                             # 거래 유형
     created_at       timestamp default current_timestamp,                             # 생성일
     updated_at       timestamp default current_timestamp on update current_timestamp, # 수정일
     category_id      smallint                   not null,                             # 카테고리 id
     foreign key (category_id) references studydb.categories (id),
-    foreign key (user_id) references studydb.users (user_id) on delete cascade
+    foreign key (user_id) references studydb.users (user_id) on delete cascade,
+    foreign key (recurring_id) references studydb.recurring_transactions (id) on delete cascade
 );
 
 create table studydb.categories
@@ -19,7 +21,6 @@ create table studydb.categories
     user_id       smallint                   not null,                             # 사용자 id
     name          varchar(50)                not null,                             # 카테고리 이름
     category_type enum ('income', 'expense') not null,                             # 카테고리 유형
-    description   varchar(255),                                                    # 카테고리 설명
     created_at    timestamp default current_timestamp,                             # 생성일
     updated_at    timestamp default current_timestamp on update current_timestamp, # 수정일
     foreign key (user_id) references studydb.users (user_id) on delete cascade,
@@ -31,10 +32,10 @@ create table studydb.recurring_transactions
     id               int auto_increment primary key,                                  # id
     user_id          smallint                                      not null,          # 사용자 id
     amount           int                                           not null,          # 금액
-    description      varchar(255),                                                    # 거래 내용
+    description      varchar(255)                                  not null,          # 거래 내용
     transaction_type enum ('income', 'expense')                    not null,          # 거래 유형
-    start_date       datetime                                      not null,          # 시작일
-    end_date         datetime,                                                        # 종료일
+    start_date       date                                          not null,          # 시작일
+    end_date         date,                                                            # 종료일
     frequency        enum ('daily', 'weekly', 'monthly', 'yearly') not null,          # 주기
     interval_value   smallint                                      not null,          # 간격
     created_at       timestamp default current_timestamp,                             # 생성일

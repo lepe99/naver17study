@@ -1,3 +1,4 @@
+// UsersDao.java
 package dao;
 
 import util.MySQLConnect;
@@ -12,7 +13,10 @@ import java.sql.SQLException;
 public class UsersDao {
     MySQLConnect db = new MySQLConnect();
     
-    // 사용자 추가 (회원가입)
+    /**
+     * 사용자 추가 (회원가입)
+     * @param user 사용자 정보
+     */
     public void createUser(UsersDto user) {
         Connection conn = db.getNCloudConnection();
         PreparedStatement ps = null;
@@ -42,7 +46,11 @@ public class UsersDao {
         }
     }
     
-    // 사용자 조회 (로그인)
+    /**
+     * 사용자 조회 (로그인)
+     * @param loginId 로그인 아이디
+     * @return 사용자 정보
+     */
     public UsersDto getUserByLoginId(String loginId) {
         Connection conn = db.getNCloudConnection();
         UsersDto user = null;
@@ -76,7 +84,12 @@ public class UsersDao {
         return user;
     }
     
-    // 비밀번호 검증
+    /**
+     * 사용자 비밀번호 검증
+     * @param loginId 로그인 아이디
+     * @param password 비밀번호
+     * @return 사용자 비밀번호 일치 여부
+     */
     public boolean validateUser(String loginId, String password) {
         UsersDto user = getUserByLoginId(loginId);
         if (user != null) {

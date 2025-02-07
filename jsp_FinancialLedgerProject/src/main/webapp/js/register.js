@@ -1,3 +1,4 @@
+// register.js
 $(document).ready(function() {
     // 회원가입 버튼 클릭 시
     $("#registerForm").submit((e) => {
@@ -16,7 +17,7 @@ function register() {
         success: (response) => {
             if (response.success) {
                 alert(response.message);
-                location.href = "login.jsp";
+                location.href = "login.html";
             }
             else alert(response.message);
         },
