@@ -58,10 +58,11 @@ create table studydb.users
 
 create table studydb.user_balances
 (
-    user_id         smallint primary key,                                            # 사용자 id
-    init_balance    int not null,                                                    # 초기 잔액
-    current_balance int not null,                                                    # 현재 잔액
-    updated_at      timestamp default current_timestamp on update current_timestamp, # 수정일
+    user_id         smallint primary key,                                             # 사용자 id
+    init_balance    int                  not null,                                    # 초기 잔액
+    current_balance int                  not null,                                    # 현재 잔액
+    updated_at      timestamp  default current_timestamp on update current_timestamp, # 수정일
+    new_user        tinyint(1) default 1 null,                                        # 신규 사용자 여부
     foreign key (user_id) references studydb.users (user_id) on delete cascade
 );
 

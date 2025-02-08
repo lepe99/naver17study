@@ -46,6 +46,34 @@ public class UserBalancesDao {
     }
     
     /**
+     * 사용자 초기 잔액 업데이트
+     * @param dto 사용자 잔액 정보
+     */
+    public void updateInitBalance(UserBalancesDto dto) {
+        Connection conn = db.getNCloudConnection();
+        PreparedStatement ps = null;
+        
+        String sql = """
+                update user_balances
+                set init_balance = ?, current_balance = ?, new_user = ?
+                where user_id = ?
+                """;
+        
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, dto.getInitBalance());
+            ps.setInt(2, dto.getInitBalance());
+            ps.setBoolean(3, false);
+            ps.setInt(4, dto.getUserId());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            db.dbClose(ps, conn);
+        }
+    }
+    
+    /**
      * 사용자 현재 잔액 업데이트
      * TransactionDao의 getAmountSum을 이용하여 사용자의 거래내역 합계를 구하고
      * 사용자의 초기 잔액과 합산하여 업데이트
@@ -62,7 +90,7 @@ public class UserBalancesDao {
                 """;
         
         TransactionsDao transactionsDao = new TransactionsDao();
-        int amount = transactionsDao.getAmountSum(dto.getUserId());
+        int amount = transactionsDao.getIncomeSum(dto.getUserId()) + transactionsDao.getExpenseSum(dto.getUserId());
         int currentBalance = dto.getInitBalance() + amount;
         
         try {
@@ -131,5 +159,37 @@ public class UserBalancesDao {
             db.dbClose(rs, ps, conn);
         }
         return 0;
+    }
+    
+    /**
+     * 신규 사용자 여부 확인
+     * @param userId 로그인 아이디
+     * @return newUser 신규 사용자 여부
+     */
+    public boolean isNewUser(int userId) {
+        Connection conn = db.getNCloudConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        String sql = """
+                select new_user
+                from user_balances
+                where user_id = ?
+                """;
+        
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, userId);
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getBoolean("new_user");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            db.dbClose(rs, ps, conn);
+        }
+        return true;
     }
 }

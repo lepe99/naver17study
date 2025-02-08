@@ -7,6 +7,15 @@
     String loginId = request.getParameter("loginId");
     String password = request.getParameter("password");
     String username = request.getParameter("username");
+    String passwordCheck = request.getParameter("passwordCheck");
+
+    JSONObject json = new JSONObject();
+    if (!password.equals(passwordCheck)) {
+        json.put("success", false);
+        json.put("message", "비밀번호가 일치하지 않습니다.");
+        out.print(json.toJSONString());
+        return;
+    }
 
     UsersDto dto = new UsersDto();
     dto.setLoginId(loginId);
@@ -21,15 +30,11 @@
         balanceDao.insertUserBalance(userId);
 
     // json 응답
-        JSONObject json = new JSONObject();
         json.put("success", true);
         json.put("message", "회원가입 성공, 로그인 페이지로 이동합니다.");
-        out.print(json.toJSONString());
     } catch (Exception e) {
-        JSONObject json = new JSONObject();
         json.put("success", false);
         json.put("message", "회원가입 실패, 아이디 중복 여부를 확인해주세요");
-        out.print(json.toJSONString());
     }
-
+    out.print(json.toJSONString());
 %>

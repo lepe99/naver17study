@@ -153,11 +153,11 @@ public class TransactionsDao {
     }
     
     /**
-     * 현재일까지의 입출금 합계 조회
+     * 현재일까지의 수입 합계 조회
      * @param userId 사용자 아이디
-     * @return amount 입출금 합계
+     * @return amount 수입 합계
      */
-    public int getAmountSum(int userId) {
+    public int getIncomeSum(int userId) {
         Connection conn = db.getNCloudConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -165,7 +165,42 @@ public class TransactionsDao {
         String sql = """
                 select sum(amount) as amount
                 from transactions
-                where user_id = ? and transaction_date <= ?
+                where user_id = ? and transaction_date <= ? and transaction_type = 'income'
+                """;
+        
+        LocalDate today = LocalDate.now();
+        
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, userId);
+            ps.setDate(2, Date.valueOf(today));
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getInt("amount");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            db.dbClose(rs, ps, conn);
+        }
+        return 0;
+    }
+    
+    /**
+     * 현재일까지의 지출 합계 조회
+     * @param userId 사용자 아이디
+     * @return amount 지출 합계
+     */
+    public int getExpenseSum(int userId) {
+        Connection conn = db.getNCloudConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        String sql = """
+                select sum(amount) as amount
+                from transactions
+                where user_id = ? and transaction_date <= ? and transaction_type = 'expense'
                 """;
         
         LocalDate today = LocalDate.now();
@@ -194,7 +229,7 @@ public class TransactionsDao {
      * @param month 월
      * @return amount 입금 합계
      */
-    public int getIncomeSum(int userId, int year, int month) {
+    public int getIncomeSumByMonth(int userId, int year, int month) {
         Connection conn = db.getNCloudConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -235,7 +270,7 @@ public class TransactionsDao {
      * @param month 월
      * @return amount 지출 합계
      */
-    public int getExpenseSum(int userId, int year, int month) {
+    public int getExpenseSumByMonth(int userId, int year, int month) {
         Connection conn = db.getNCloudConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
