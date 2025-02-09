@@ -66,55 +66,29 @@ public class CategoriesDao {
     }
     
     /**
-     * 카테고리 수정
-     * @param dto 카테고리 정보
-     */
-    public void updateCategory(CategoriesDto dto) {
-        Connection conn = db.getNCloudConnection();
-        PreparedStatement ps = null;
-        
-        String sql = """
-                update categories
-                set name = ?, category_type = ?
-                where id = ?
-                """;
-        
-        try {
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, dto.getName());
-            ps.setString(2, dto.getCategoryType());
-            ps.setInt(3, dto.getId());
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            db.dbClose(ps, conn);
-        }
-    }
-    
-    /**
      * 카테고리 조회
      * @return 카테고리 정보
      */
-    public List<CategoriesDto> getCategories() {
+    public List<CategoriesDto> getCategories(int userId) {
         Connection conn = db.getNCloudConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<CategoriesDto> list = new ArrayList<>();
         
         String sql = """
-                select id, user_id, name, category_type
+                select id, name, category_type
                 from categories
+                where user_id = ?
                 """;
         
         try {
             ps = conn.prepareStatement(sql);
+            ps.setInt(1, userId);
             rs = ps.executeQuery();
             
             while (rs.next()) {
                 CategoriesDto dto = new CategoriesDto();
                 dto.setId(rs.getInt("id"));
-                dto.setUserId(rs.getInt("user_id"));
                 dto.setName(rs.getString("name"));
                 dto.setCategoryType(rs.getString("category_type"));
                 list.add(dto);

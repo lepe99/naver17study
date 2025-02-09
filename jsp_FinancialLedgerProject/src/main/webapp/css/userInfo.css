@@ -1,0 +1,53 @@
+/* userInfo.css */
+
+.amount {
+    float: right; /* 금액 오른쪽 정렬 */
+}
+
+/* 테이블 셀 스타일 수정 */
+td { /* th 대신 td에 적용 */
+    text-align: left; /* 기본 텍스트 정렬은 왼쪽 */
+    font-size: 17px;
+    padding: 5px;
+}
+
+th, .userName {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+}
+
+#btnLogout {
+    float: right;
+}
+
+#btnCategoryManagement {
+    float: right;
+    margin-top: 10px;
+}
+
+#btnAddTransaction {
+    margin-top: 10px;
+}
+
+.income {
+    color: deepskyblue;
+}
+
+.expense {
+    color: palevioletred;
+}
+
+.table3 {
+    height: 170px;
+}
+
+.altTable {
+    font-size: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

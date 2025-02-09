@@ -9,7 +9,7 @@ $(document).ready(function() {
         }
         e.preventDefault();
         $.ajax({
-            url: "setInitBalance.jsp",
+            url: "../../controller/setInitBalance.jsp",
             type: "get",
             dataType: "json",
             data: {
@@ -18,7 +18,8 @@ $(document).ready(function() {
             success: (response) => {
                 if (response.success === true) {
                     alert(response.message);
-                    location.reload();
+                    setInit = true;
+                    loadUserInfo();
                 } else {
                     alert(response.message);
                 }

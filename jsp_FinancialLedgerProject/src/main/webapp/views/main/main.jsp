@@ -1,4 +1,6 @@
-<!-- main.html -->
+<%-- main.jsp --%>
+<%@ page import="dto.UsersDto" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -18,8 +20,22 @@
     <script src="../../js/main.js"></script>
     <link rel="stylesheet" href="../../css/main.css">
 </head>
-<body>
-<div class="container" id="infoContainer">111</div>
-<div class="container" id="calendarContainer">111</div>
+<%
+    UsersDto dto = (UsersDto) session.getAttribute("loginUser");
+    int userId;
+    if (dto == null) {
+        response.sendRedirect("../user/login.html");
+    } else {
+        userId = dto.getUserId();
+    }
+%>
+<body class="main">
+<div class="container" id="infoContainer"></div>
+<div class="container" id="calendarContainer"></div>
+<div id="transactionModalContainer">
+    <jsp:include page="../modal/insertTransactionForm.html"/>
+    <jsp:include page="../modal/insertCategoryForm.html"/>
+    <jsp:include page="../modal/listDailyTransactionForm.html"/>
+</div>
 </body>
 </html>

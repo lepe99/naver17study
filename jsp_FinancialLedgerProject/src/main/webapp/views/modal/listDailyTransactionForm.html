@@ -1,0 +1,66 @@
+<!-- listDailyTransactionForm.html -->
+<script src="../../js/listDailyTransactionForm.js"></script>
+<link rel="stylesheet" href="../../css/listDailyTransactionForm.css">
+<div class="modal fade" id="dailyTransactionModal" tabindex="-1" aria-labelledby="dailyTransactionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title" id="dailyTransactionModalLabel"></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="incomeList">
+                    <h3>수입</h3>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th style="width: 80px;">유형</th>
+                            <th style="width: 120px;">금액</th>
+                            <th>거래 내용</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="incomeData"></tbody>
+                    </table>
+                </div>
+                <hr>
+                <div id="expenseList">
+                    <h3>지출</h3>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th style="width: 80px;">유형</th>
+                            <th style="width: 120px;">금액</th>
+                            <th>거래 내용</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="expenseData"></tbody>
+                    </table>
+                </div>
+                <hr>
+                <div id="totalAmount">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>수입</th>
+                            <th>지출</th>
+                            <th>합계</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td id="dailyIncome"></td>
+                            <td id="dailyExpense"></td>
+                            <td id="dailySum"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                <button type="button" class="btn btn-primary" id="btnAddTransaction2">수입/지출 추가</button>
+            </div>
+        </div>
+    </div>
+</div>

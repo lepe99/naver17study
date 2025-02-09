@@ -5,10 +5,7 @@ import dto.RecurringTransactionsDto;
 import dto.TransactionsDto;
 import util.MySQLConnect;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 
 public class RecurringTransactionsDao {
@@ -23,6 +20,7 @@ public class RecurringTransactionsDao {
     public void insertRecurringTransactions(RecurringTransactionsDto dto) {
         Connection conn = db.getNCloudConnection();
         PreparedStatement ps = null;
+        ResultSet rs = null;
         
         String sql = """
                 insert into recurring_transactions
@@ -30,8 +28,13 @@ public class RecurringTransactionsDao {
                 values (?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """;
         
+        String sqlSelect = """
+                select max(id) as id
+                from recurring_transactions
+                where user_id = ?
+                """;
+        
         int userId = dto.getUserId();
-        int recurringId = dto.getId();
         int amount = dto.getAmount();
         String description = dto.getDescription();
         String transactionType = dto.getTransactionType();
@@ -49,6 +52,14 @@ public class RecurringTransactionsDao {
             ps.setInt(8, dto.getIntervalValue());
             ps.setInt(9, dto.getCategoryId());
             ps.executeUpdate();
+            
+            ps = conn.prepareStatement(sqlSelect);
+            ps.setInt(1, userId);
+            rs = ps.executeQuery();
+            int recurringId = 1;
+            if (rs.next()) {
+                recurringId = rs.getInt("id");
+            }
             
             TransactionsDto transactionsDto = new TransactionsDto();
             transactionsDto.setUserId(userId);
@@ -72,7 +83,7 @@ public class RecurringTransactionsDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
-            db.dbClose(ps, conn);
+            db.dbClose(rs, ps, conn);
         }
     }
     
@@ -135,15 +146,5 @@ public class RecurringTransactionsDao {
         } finally {
             db.dbClose(ps, conn);
         }
-    }
-    
-    /**
-     * 반복 거래 정보 수정
-     * update 문을 이용하지 않고 delete 후 insert로 처리한다
-     * @param dto 반복 거래 정보
-     */
-    public void updateRecurringTransactions(RecurringTransactionsDto dto) {
-        deleteRecurringTransactions(dto.getId());
-        insertRecurringTransactions(dto);
     }
 }

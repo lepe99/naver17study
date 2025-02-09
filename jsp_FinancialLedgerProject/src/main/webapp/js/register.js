@@ -10,7 +10,7 @@ $(document).ready(function() {
 // 회원가입
 function register() {
     $.ajax({
-        url: "registerProcess.jsp",
+        url: "../../controller/registerProcess.jsp",
         type: "post",
         dataType: "json",
         data: $("#registerForm").serialize(),

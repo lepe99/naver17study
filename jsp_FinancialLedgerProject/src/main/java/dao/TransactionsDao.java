@@ -8,7 +8,9 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TransactionsDao {
     MySQLConnect db = new MySQLConnect();
@@ -24,50 +26,22 @@ public class TransactionsDao {
         
         String sql = """
                 insert into transactions
-                (user_id, transaction_date, amount, description, transaction_type, category_id)
-                values (?, ?, ?, ?, ?, ?)
+                (user_id, recurring_id, transaction_date, amount, description, transaction_type, category_id)
+                values (?, ?, ?, ?, ?, ?, ?)
                 """;
         
         String transactionType = dto.getTransactionType();
         int amount = transactionType.equals("income") ? dto.getAmount() : -dto.getAmount();
-        
+        int recurringId = dto.getRecurringId() == 0 ? 1 : dto.getRecurringId();
         try {
             ps = conn.prepareStatement(sql);
             ps.setInt(1, dto.getUserId());
-            ps.setDate(2, dto.getTransactionDate());
-            ps.setInt(3, amount);
-            ps.setString(4, dto.getDescription());
-            ps.setString(5, transactionType);
-            ps.setInt(6, dto.getCategoryId());
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            db.dbClose(ps, conn);
-        }
-    }
-    
-    /**
-     * 거래내역 수정
-     * @param dto 거래내역 정보
-     */
-    public void updateTransaction(TransactionsDto dto) {
-        Connection conn = db.getNCloudConnection();
-        PreparedStatement ps = null;
-        
-        String sql = """
-                update transactions
-                set transaction_date = ?, amount = ?, description = ?, transaction_type = ?, category_id = ?
-                where id = ?
-                """;
-        try {
-            ps = conn.prepareStatement(sql);
-            ps.setDate(1, dto.getTransactionDate());
-            ps.setInt(2, dto.getAmount());
-            ps.setString(3, dto.getDescription());
-            ps.setString(4, dto.getTransactionType());
-            ps.setInt(5, dto.getCategoryId());
-            ps.setInt(6, dto.getId());
+            ps.setInt(2, recurringId);
+            ps.setDate(3, dto.getTransactionDate());
+            ps.setInt(4, amount);
+            ps.setString(5, dto.getDescription());
+            ps.setString(6, transactionType);
+            ps.setInt(7, dto.getCategoryId());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -150,6 +124,52 @@ public class TransactionsDao {
             db.dbClose(ps, conn);
         }
         return list;
+    }
+    
+    /**
+     * 카테고리명 조인하여 특정 일의 거래내역 조회
+     * @param userId 사용자 아이디
+     * @param date 조회할 날짜
+     * @return Map 거래내역 목록
+     */
+    public Map<Integer, Map<String, Object>> getDailyTransactionWithCategory(int userId, Date date) {
+        Connection conn = db.getNCloudConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Map<Integer, Map<String, Object>> mapList = new HashMap<>();
+        
+        String sql = """
+                select t.id, t.recurring_id, t.amount, t.description, t.transaction_type, c.name
+                from transactions t
+                join categories c on t.category_id = c.id
+                where t.user_id = ?
+                and t.transaction_date = ?
+                """;
+        
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, userId);
+            ps.setDate(2, date);
+            rs = ps.executeQuery();
+            
+            Integer key = 0;
+            while (rs.next()) {
+                Map<String, Object> map = new HashMap<>();
+                map = new HashMap<>();
+                map.put("id", rs.getInt("id"));
+                map.put("recurringId", rs.getInt("recurring_id"));
+                map.put("amount", rs.getInt("amount"));
+                map.put("description", rs.getString("description"));
+                map.put("transactionType", rs.getString("transaction_type"));
+                map.put("categoryName", rs.getString("name"));
+                mapList.put(++key, map);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            db.dbClose(rs, ps, conn);
+        }
+        return mapList;
     }
     
     /**
@@ -311,7 +331,7 @@ public class TransactionsDao {
      * @param month 월
      * @return amount 수입 합계
      */
-    public int getIncomeSumUntil(int userId, int year, int month) {
+    public int getIncomeSumExpected(int userId, int year, int month) {
         Connection conn = db.getNCloudConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -352,7 +372,7 @@ public class TransactionsDao {
      * @param month 월
      * @return amount 지출 합계
      */
-    public int getExpenseSumUntil(int userId, int year, int month) {
+    public int getExpenseSumExpected(int userId, int year, int month) {
         Connection conn = db.getNCloudConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;

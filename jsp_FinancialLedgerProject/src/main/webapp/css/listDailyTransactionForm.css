@@ -1,0 +1,32 @@
+/* listDailyTransactionForm.css */
+#dailyTransactionModal th {
+    font-size: 20px;
+    font-weight: normal;
+}
+
+#dailyTransactionModal table {
+    width: 100%;
+}
+
+#dailyTransactionModal .delete-icon {
+    color: palevioletred;
+    cursor: pointer;
+    float: right;
+}
+
+#dailyTransactionModal .modal-content {
+    padding: 20px;
+}
+
+#dailyIncome {
+    color: deepskyblue;
+}
+
+#dailyExpense {
+    color: palevioletred;
+}
+
+#dailyTransactionModalLabel {
+    font-size: 25px;
+    font-weight: bold;
+}

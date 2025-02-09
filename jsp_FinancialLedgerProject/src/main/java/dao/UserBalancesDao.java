@@ -12,6 +12,37 @@ import java.sql.SQLException;
 public class UserBalancesDao {
     MySQLConnect db = new MySQLConnect();
     
+    /** 사용자 초기 잔액 정보 조회
+     * @param userId 사용자 아이디
+     * @return 사용자 초기 잔액 정보
+     */
+    public int getInitBalance(int userId) {
+        Connection conn = db.getNCloudConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        String sql = """
+                select init_balance
+                from user_balances
+                where user_id = ?
+                """;
+        
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, userId);
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getInt("init_balance");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            db.dbClose(rs, ps, conn);
+        }
+        return 0;
+    }
+    
     /**
      * 사용자 잔액 정보 조회
      * @param userId 사용자 아이디
@@ -79,7 +110,7 @@ public class UserBalancesDao {
      * 사용자의 초기 잔액과 합산하여 업데이트
      * @param dto 사용자 잔액 정보
      */
-    public void updateCurrentBalance(UserBalancesDto dto) {
+    public void updateCurrentBalance(UserBalancesDto dto, int amount) {
         Connection conn = db.getNCloudConnection();
         PreparedStatement ps = null;
         
@@ -89,8 +120,6 @@ public class UserBalancesDao {
                 where user_id = ?
                 """;
         
-        TransactionsDao transactionsDao = new TransactionsDao();
-        int amount = transactionsDao.getIncomeSum(dto.getUserId()) + transactionsDao.getExpenseSum(dto.getUserId());
         int currentBalance = dto.getInitBalance() + amount;
         
         try {

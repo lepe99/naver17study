@@ -1,15 +1,21 @@
 <%-- welcome.jsp --%>
-<%@ page import="dao.UserBalancesDao"%>
-<%@ page import="org.json.simple.JSONObject"%>
-<%@ page import="dto.UsersDto"%><%@ page language="java" contentType="application/json; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="dto.UsersDto" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<script src="../../js/welcome.js"></script>
 <%
     UsersDto dto = (UsersDto) session.getAttribute("loginUser");
-    int userId = dto.getUserId();
-    UserBalancesDao dao = new UserBalancesDao();
-    boolean newUser = dao.isNewUser(userId);
-    JSONObject json = new JSONObject();
-    if (newUser) json.put("newUser", true);
-    else json.put("newUser", false);
-
-    out.print(json.toJSONString());
+    String userName = dto.getUsername();
 %>
+<div>
+    <h4><%= userName %>님 환영합니다!</h4>
+    <hr>
+    <form id="initBalanceForm">
+        <label for="initBalance">가계부 시작 전에 <br>초기 잔고를 입력해 주세요</label>
+        <br>
+        <br>
+        <div class="input-group">
+            <input type="number" id="initBalance" name="initBalance" class="form-control" checked><br>
+            <button type="submit" class="btn btn-primary">입력</button>
+        </div>
+    </form>
+</div>

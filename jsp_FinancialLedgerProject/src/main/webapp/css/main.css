@@ -1,7 +1,6 @@
 /* main.css */
-body {
+.main {
     background-color: #f8f9fa;
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
@@ -10,7 +9,7 @@ body {
     height: 100vh;
 }
 
-.container {
+.main .container {
     padding: 10px;
     height: 700px;
     margin: 0 35px 0 35px;
@@ -20,13 +19,21 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-#infoContainer {
+.main #infoContainer {
     width: 300px;
+    padding: 30px;
 }
 
-#calendarContainer {
-    width: 700px;
-    padding-top: 30px;
+.main #calendarContainer {
+    width: 750px;
+    padding: 30px;
     display: flex;
     justify-content: center;
+}
+
+/* number input에서 화살표 없애기 */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

@@ -1,19 +1,90 @@
 <!-- insertTransactionForm.html -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<script src="../../js/insertTransactionForm.js"></script>
+<body>
+<div class="modal fade" id="transactionModal" tabindex="-1" aria-labelledby="transactionModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 400px;">
         <div class="modal-content">
             
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
+            <form id="transactionForm">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="transactionModalLabel">수입 / 지출 추가</h5>
+                    <select class="form-select form-select-sm" id="addTransactionFrequency" name="transactionFrequency"
+                            style="width: auto; margin-left: 1rem;">
+                        <option value="once" selected>단일</option>
+                        <option value="recurring">고정</option>
+                    </select>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="mb-3 row">
+                        <div class="col-md-5">
+                            <label for="addTransactionType" class="form-label">유형</label>
+                            <select class="form-select" id="addTransactionType" name="transactionType">
+                                <option value="income" selected>수입</option>
+                                <option value="expense">지출</option>
+                            </select>
+                        </div>
+                        <div class="col-md-7">
+                            <label for="addDescription" class="form-label">거래 내용</label>
+                            <input type="text" class="form-control" id="addDescription" name="description"
+                                   required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 row">
+                        <div class="col-md-5">
+                            <label for="addAmount" class="form-label">금액</label>
+                            <input type="number" class="form-control" id="addAmount" name="amount" required>
+                        </div>
+                        <div class="col-md-7">
+                            <label for="addCategory" class="form-label">카테고리</label>
+                            <div class="input-group">
+                                <select class="form-select" id="addCategory" name="categoryId"></select>
+                                <button type="button" id="btnAddCategory" class="btn btn-outline-secondary">추가
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3" id="singleDateDiv">
+                        <label for="addTransactionDate" class="form-label">거래일</label>
+                        <input type="date" class="form-control" id="addTransactionDate" name="transactionDate">
+                    </div>
+                    
+                    <div class="mb-3" id="frequencyDiv" style="display: none;">
+                        <label class="form-label">빈도 및 주기</label>
+                        <div class="input-group frequency-input-group">
+                            <input type="number" class="form-control" id="addIntervalValue" name="intervalValue"
+                                   placeholder="빈도">
+                            <select class="form-select" id="addFrequency" name="frequency">
+                                <option value="daily">일 마다</option>
+                                <option value="weekly">주 마다</option>
+                                <option value="monthly">월 마다</option>
+                                <option value="yearly">년 마다</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 row" id="dateRangeDiv" style="display: none;">
+                        <div class="col">
+                            <label for="addStartDate" class="form-label">시작일</label>
+                            <input type="date" class="form-control" id="addStartDate" name="startDate">
+                        </div>
+                        <div class="col">
+                            <label for="addEndDate" class="form-label">종료일</label>
+                            <input type="date" class="form-control" id="addEndDate" name="endDate" value="2030-12-31">
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+            
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                <button type="submit" class="btn btn-primary" form="transactionForm" data-bs-dismiss="modal">추가</button>
             </div>
+        
         </div>
     </div>
 </div>

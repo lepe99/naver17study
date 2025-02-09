@@ -5,11 +5,8 @@
 <%@ page import="org.json.simple.JSONObject"%>
 <%@ page language="java" contentType="application/json; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
-    System.out.println("1");
     int initBalance = Integer.parseInt(request.getParameter("initBalance"));
-    System.out.println("2");
     UsersDto userDto = (UsersDto) session.getAttribute("loginUser");
-    System.out.println("3");
     int userId = userDto.getUserId();
     JSONObject json = new JSONObject();
     try{

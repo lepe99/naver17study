@@ -2,7 +2,7 @@ create table studydb.transactions
 (
     id               int auto_increment primary key,                                  # id
     user_id          smallint                   not null,                             # 사용자 id
-    recurring_id     int       default 0,                                             # 반복 거래 id
+    recurring_id     int       default 1,                                             # 반복 거래 id
     transaction_date date                       not null,                             # 거래일
     amount           int                        not null,                             # 금액
     description      varchar(255)               not null,                             # 거래 내용
