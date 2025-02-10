@@ -28,7 +28,7 @@ $(document).ready(function() {
     });
 
     // 카테고리 삭제 이벤트
-    $("#categoryList").on("click", ".delete-icon", (e) => {
+    $("#categoryList").on("click", ".delete-icon-category", (e) => {
         if (!confirm("정말 삭제하시겠습니까?")) return;
         $.ajax({
             url: "../../controller/deleteCategory.jsp",
@@ -63,7 +63,7 @@ function loadCategoryList() {
                     s += `
                     <li class="list-group-item category-item">
                         <span>${e.name}</span>
-                        <i class="bi bi-trash delete-icon" style="float: right; color: palevioletred; cursor: pointer;" 
+                        <i class="bi bi-trash delete-icon-category" style="float: right; color: palevioletred; cursor: pointer;" 
                         data-id="${e.id}"></i>
                     </li>
                     `;

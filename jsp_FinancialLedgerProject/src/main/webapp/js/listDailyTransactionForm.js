@@ -21,8 +21,10 @@ $(document).ready(function() {
                     loadCalendar();
                 } else alert(response.message);
             },
-            error: () => {
-                alert("수입/지출 내역 삭제 실패.");
+            // 콘솔에 자세한 오류 로그 출력
+            error: (xhr, status, error) => {
+                console.error("AJAX 오류:", status, error);
+                alert("서버 요청 중 오류가 발생했습니다.");
             }
         });
     });

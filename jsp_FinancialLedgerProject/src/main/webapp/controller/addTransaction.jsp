@@ -25,6 +25,7 @@
             TransactionsDto transactionsDto = new TransactionsDto();
             transactionsDto.setUserId(userId);
             transactionsDto.setTransactionType(transactionType);
+            transactionsDto.setRecurringId(1);
             transactionsDto.setDescription(description);
             transactionsDto.setAmount(amount);
             transactionsDto.setCategoryId(categoryId);

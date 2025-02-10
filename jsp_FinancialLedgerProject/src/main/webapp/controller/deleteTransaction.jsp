@@ -2,7 +2,7 @@
 <%@ page import="dao.TransactionsDao"%>
 <%@ page import="org.json.simple.JSONObject"%>
 <%@ page import="dao.RecurringTransactionsDao"%>
-%@ page language="java" contentType="application/json; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="application/json; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     int id = Integer.parseInt(request.getParameter("id"));
     int recurringId = Integer.parseInt(request.getParameter("recurringId"));

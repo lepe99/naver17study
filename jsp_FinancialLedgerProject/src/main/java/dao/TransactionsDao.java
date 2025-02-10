@@ -32,7 +32,8 @@ public class TransactionsDao {
         
         String transactionType = dto.getTransactionType();
         int amount = transactionType.equals("income") ? dto.getAmount() : -dto.getAmount();
-        int recurringId = dto.getRecurringId() == 0 ? 1 : dto.getRecurringId();
+        Integer recurringIdObj = dto.getRecurringId();
+        int recurringId = recurringIdObj == null ? 1 : recurringIdObj;
         try {
             ps = conn.prepareStatement(sql);
             ps.setInt(1, dto.getUserId());
