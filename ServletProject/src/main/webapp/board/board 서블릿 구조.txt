@@ -1,0 +1,4 @@
+BoardListServlet.java (/board/list) - 포워드 - boardList.jsp
+BoardFormServlet.java (/board/writeForm) - 포워드 - writeForm.jsp
+BoardInsertServlet.java (/board/insert) - 리다이렉트 - /board/list
+BoardDetailServlet.java (/board/detail) - 포워드 - content.jsp

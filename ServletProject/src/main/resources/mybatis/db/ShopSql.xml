@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shop.data.ShopDao">
+
+	<resultMap id="shopResultMap" type="ShopDto">
+		<id property="num" column="num"/>
+		<result property="prdtName" column="prdt_name"/>
+		<result property="prdtColor" column="prdt_color"/>
+		<result property="prdtCnt" column="prdt_cnt"/>
+		<result property="prdtPrice" column="prdt_price"/>
+		<result property="prdtImage" column="prdt_image"/>
+		<result property="prdtDateIn" column="prdt_date_in"/>
+		<result property="dateWrite" column="date_write"/>
+	</resultMap>
+
+	<select id="totalCount" resultType="int">
+		select count(*) from shop
+	</select>
+
+	<!-- resultMap 명시 해줘야 적용됨 -->
+	<select id="selectAllList" resultType="ShopDto" resultMap="shopResultMap">
+		select * from shop order by num
+	</select>
+
+	<insert id="insertShop" parameterType="ShopDto">
+		insert into shop (prdt_name, prdt_color, prdt_cnt, prdt_price, prdt_image, prdt_date_in, date_write)
+		values (#{prdtName}, #{prdtColor}, #{prdtCnt}, #{prdtPrice}, #{prdtImage}, #{prdtDateIn}, now())
+	</insert>
+
+	<select id="selectOneByNum" parameterType="int" resultType="ShopDto" resultMap="shopResultMap">
+		select * from shop where num=#{num}
+	</select>
+
+	<update id="updateShop" parameterType="ShopDto">
+		update shop set prdt_name=#{prdtName}, prdt_color=#{prdtColor}, prdt_cnt=#{prdtCnt},
+		prdt_price=#{prdtPrice}, prdt_image=#{prdtImage}, prdt_date_in=#{prdtDateIn} where num=#{num}
+	</update>
+
+	<delete id="deleteShop" parameterType="int">
+		delete from shop where num=#{num}
+	</delete>
+
+</mapper>

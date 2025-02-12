@@ -1,0 +1,11 @@
+
+ListServet (매핑:/shop/list ) ---(포워드)--- shopList.jsp
+AddFormServlet(/shop/addForm) ----(포워드)--addForm.jsp
+AddProcessServlet(/shop/insert)----(리다이렉트)---/shop/list
+ShopDetailServlet(/shop/detail)----(포워드)--- shopDetail.jsp
+UpdateFormServlet(/shop/updateForm)---(포워드)---updateForm.jsp
+UpdateProcessServlet(/shop/update)---(리다이렉트)--/shop/list or /shop/detail
+DeleteServlet(/shop/delete)---(리다이렉트)----/shop/list
+
+
+sql - dao - servlet - jsp 순으로 코딩

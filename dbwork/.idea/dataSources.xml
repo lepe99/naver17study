@@ -25,5 +25,13 @@
       <jdbc-url>jdbc:mysql://db-324oca-kr.vpc-pub-cdb.ntruss.com:3306/studydb</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="InstructorDB" uuid="8aeb9702-87a2-4749-80f1-1af75c27bc25">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <remarks>InstructorDB</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://db-324o8d-kr.vpc-pub-cdb.ntruss.com:3306/studydb</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

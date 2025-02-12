@@ -34,7 +34,7 @@ public class PasswordHashingUtil {
             // 비밀번호도 동일하게 바이트 변환하여 salt와 함께 바이트 배열에 추가
             byte[] hashedPassword = md.digest(password.getBytes());
             
-            // 바이트 배열을 16진수 문자열 변환
+            // 바이트 배열을 16진수 문자열로 변환
             StringBuilder sb = new StringBuilder();
             for (byte b : hashedPassword) {
                 sb.append(String.format("%02x", b));
