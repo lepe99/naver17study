@@ -23,17 +23,11 @@
 </head>
 <body>
 <jsp:include page="../kakao/kakaoLogin.jsp"/><br><br><hr>
-<div style="margin: 50px; width: 300px;">
-    <form action="./delete" method="post">
-        <input type="hidden" name="num" value="${num}">
-        <input type="hidden" name="pageNum" value="${pageNum}">
-        <h4>비밀번호를 입력해주세요</h4>
-        <div class="input-group">
-            <h5>비밀번호</h5>
-            <input type="password" name="passwd" class="form-control" required>
-            <button type="submit" class="btn btn-outline-danger">삭제</button>
-        </div>
-    </form>
+<div style="margin: 100px; width: 300px;">
+    <h2>비밀번호가 맞지 않습니다</h2>
+    <br>
+    <!-- a 태그에 js 코드 넣을시 아래처럼 사용 -->
+    <a href="javascript:history.back();">이전</a>
 </div>
 </body>
 </html>

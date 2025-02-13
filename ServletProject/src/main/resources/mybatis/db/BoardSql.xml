@@ -43,4 +43,36 @@
         from reboard
         where num = #{num}
     </select>
+    
+    <select id="chkPasswd" parameterType="Map" resultType="int">
+        select count(*)
+        from reboard
+        where num = #{num}
+          and passwd = #{passwd}
+    </select>
+
+    <delete id="deleteBoard" parameterType="int">
+        delete from reboard
+        where num = #{num}
+    </delete>
+
+    <update id="updateBoard" parameterType="BoardDto">
+        update reboard
+        set subject = #{subject}, content = #{content}
+        where num = #{num}
+    </update>
+
+    <select id="searchList" parameterType="Map" resultType="BoardDto">
+        select *
+        from reboard
+        where ${field} like concat('%', #{search}, '%')
+        order by regroup desc, restep asc
+        limit #{start}, #{perPage}
+    </select>
+
+    <select id="getSearchCount" parameterType="Map" resultType="int">
+        select count(*)
+        from reboard
+        where ${field} like concat('%', #{search}, '%')
+    </select>
 </mapper>

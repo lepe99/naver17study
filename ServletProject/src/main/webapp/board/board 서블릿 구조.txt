@@ -2,3 +2,8 @@ BoardListServlet.java (/board/list) - 포워드 - boardList.jsp
 BoardFormServlet.java (/board/writeForm) - 포워드 - writeForm.jsp
 BoardInsertServlet.java (/board/insert) - 리다이렉트 - /board/list
 BoardDetailServlet.java (/board/detail) - 포워드 - content.jsp
+BoardDeletePassServlet.java (/board/deletePassForm) - 포워드 - deletePass.jsp
+BoardDeleteProcessServlet.java (/board/delete) - 포워드 - fail.jsp (비밀번호가 틀린 경우),
+BoardDeleteProcessServlet.java (/board/delete) - 리다이렉트 - /board/list (비밀번호가 맞는 경우)
+BoardUpdateFormServlet.java (/board/updateForm) - 포워드 - updateForm.jsp (제목, 내용만)
+BoardUpdateServlet.java (/board/update) - 리다이렉트 - /board/detail

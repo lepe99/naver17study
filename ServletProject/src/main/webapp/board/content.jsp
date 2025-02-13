@@ -37,32 +37,55 @@
     <script>
         $(document).ready(function () {
             $(".btn").addClass("btn btn-outline-secondary btn-sm").css("width", "100px");
+
+            if (localStorage.writer === "${dto.writer}") {
+                $(".writer").show();
+            } else {
+                $(".writer").hide();
+            }
         });
     </script>
 </head>
 <body>
+<jsp:include page="../kakao/kakaoLogin.jsp"/>
+<br><br>
+<hr>
 <div style="margin: 20px; width: 600px;">
     <h1><b>${dto.subject}</b></h1>
     <div>
-        <img src="${dto.photo}" class="smallPhoto" style="text-align: left;" data-bs-toggle="modal" data-bs-target="#imgModal">
-        <span>${dto.writer}</span>
-        <span class="day">
-            <fmt:formatDate value="${dto.writeday}" pattern="yyyy-MM-dd HH:mm"/>
-            &nbsp;&nbsp;&nbsp;
-            조회 ${dto.readcount}
-        </span>
+        <table>
+            <tr>
+                <td rowspan="2">
+                    <img src="${dto.photo}" class="smallPhoto" style="text-align: left;" data-bs-toggle="modal"
+                         data-bs-target="#imgModal">
+                </td>
+                <td><span>${dto.writer}</span></td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="day">
+                        <fmt:formatDate value="${dto.writeday}" pattern="yyyy-MM-dd HH:mm"/>
+                        &nbsp;&nbsp;&nbsp;
+                        조회 ${dto.readcount}
+                    </span>
+                </td>
+            </tr>
+        </table>
     </div>
     <hr>
     <pre style="font-size: 17px;">${dto.content}</pre>
     <div style="margin-top: 50px;">
         <button type="button" class="btn" onclick="location.href='./writeForm'">글쓰기</button>
-        <button type="button" class="btn" onclick="location.href='./list'">목록</button>
+        <button type="button" class="btn" onclick="location.href='./list?pageNum=${pageNum}'">목록</button>
         <button type="button" class="btn" onclick="location.href
                 ='./writeForm?num=${dto.num}&regroup=${dto.regroup}&restep=${dto.restep}&relevel=${dto.relevel}'">답변
         </button>
-        <button type="button" class="btn" onclick="location.href='./updateForm?num=${dto.num}'">수정</button>
-        <button type="button" class="btn" onclick="location.href='./deletePassForm?num=${dto.num}'">삭제</button>
-
+        <button type="button" class="btn writer"
+                onclick="location.href='./updateForm?num=${dto.num}&pageNum=${pageNum}'">수정
+        </button>
+        <button type="button" class="btn writer"
+                onclick="location.href='./deletePassForm?num=${dto.num}&pageNum=${pageNum}'">삭제
+        </button>
     </div>
 </div>
 
@@ -73,12 +96,12 @@
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">사진 상세보기</h4>
+                <h4 class="modal-title">${dto.writer}님의 프로필 사진</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
             <!-- Modal body -->
-            <div class="modal-body" style="color: li">
+            <div class="modal-body">
                 <img src="${dto.photo}" style="width: 100%; ">
             </div>
 

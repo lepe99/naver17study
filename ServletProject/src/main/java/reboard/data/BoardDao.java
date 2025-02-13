@@ -122,4 +122,68 @@ public class BoardDao {
         session.close();
         return dto;
     }
+    
+    /**
+     * 비밀번호 일치 확인
+     * @param num 글번호
+     * @param passwd 비밀번호
+     * @return 비밀번호 일치 여부
+     */
+    public boolean checkPasswd(int num, String passwd) {
+        session = getSession();
+        Map<String, Object> map = Map.of("num", num, "passwd", passwd);
+        int result = session.selectOne(namespace + "chkPasswd", map);
+        session.close();
+        return (result == 1);
+    }
+    
+    /**
+     * 글 삭제 메소드
+     * @param num 글번호
+     */
+    public void deleteBoard(int num) {
+        session = getSession();
+        session.delete(namespace + "deleteBoard", num);
+        session.close();
+    }
+    
+    /**
+     * 글 수정 메소드
+     * @param dto 글 정보
+     */
+    public void updateBoard(BoardDto dto) {
+        session = getSession();
+        session.update(namespace + "updateBoard", dto);
+        session.close();
+    }
+    
+    /**
+     * 검색 결과를 가져오는 메소드
+     * @param field 검색 조건
+     * @param search 검색어
+     * @return 검색 결과
+     */
+    public List<BoardDto> selectSearchList(String field, String search, int start, int perPage) {
+        session = getSession();
+        Map<Object, Object> map =
+                Map.of("field", field, "search", search, "start", start, "perPage", perPage);
+        List<BoardDto> list = session.selectList(namespace + "searchList", map);
+        session.close();
+        return list;
+    }
+    
+    /**
+     * 검색 결과의 개수를 가져오는 메소드
+     * @param field 검색 조건
+     * @param search 검색어
+     * @return 검색 결과의 개수
+     */
+    public int getSearchCount(String field, String search) {
+        session = getSession();
+        Map<String, String> map = Map.of("field", field, "search", search);
+        System.out.println("map: " + map.get("field") + ", " + map.get("search"));
+        int count = session.selectOne(namespace + "getSearchCount", map);
+        session.close();
+        return count;
+    }
 }

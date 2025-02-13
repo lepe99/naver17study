@@ -8,28 +8,30 @@ import reboard.data.BoardDto;
 
 import java.io.IOException;
 
-@WebServlet("/board/detail")
-public class BoardDetailServlet extends HttpServlet {
+@WebServlet("/board/update")
+public class BoardUpdateServlet extends HttpServlet {
     BoardDao dao = new BoardDao();
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // pageNum 가져오기 (여기서 사용 안할거라 String으로 받음)
+        int num = Integer.parseInt(request.getParameter("num"));
         String pageNum = request.getParameter("pageNum");
         
-        int num = Integer.parseInt(request.getParameter("num"));
-        dao.updateReadCount(num); // 조회수 증가
+        // subject, content 가져오기
+        String subject = request.getParameter("subject");
+        String content = request.getParameter("content");
         
-        // dto 가져오기
-        BoardDto dto = dao.getData(num);
+        // dto에 저장
+        BoardDto dto = new BoardDto();
+        dto.setNum(num);
+        dto.setSubject(subject);
+        dto.setContent(content);
         
-        // request 객체에 저장
-        request.setAttribute("dto", dto);
-        request.setAttribute("pageNum", pageNum);
+        // update
+        dao.updateBoard(dto);
         
-        // forward
-        RequestDispatcher rd = request.getRequestDispatcher("./content.jsp");
-        rd.forward(request, response);
+        // redirect
+        response.sendRedirect("./detail?num=" + num + "&pageNum=" + pageNum);
     }
     
     @Override
