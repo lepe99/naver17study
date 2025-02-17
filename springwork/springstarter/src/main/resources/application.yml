@@ -1,0 +1,9 @@
+spring.application.name: springstarter
+
+# 기본포트는 8080 아래처럼 포트 변경 가능
+server.port: 8084
+
+# view resolver 설정 (forward:/WEB-INF/day0214/ + viewName + .jsp)
+spring.mvc.view:
+  prefix: /WEB-INF/day0214/
+  suffix: .jsp
