@@ -1,0 +1,7 @@
+spring.application.name: springMvc
+
+server.port: 8084
+
+spring.mvc.view:
+  prefix: /WEB-INF/
+  suffix: .jsp
