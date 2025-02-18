@@ -42,5 +42,42 @@
 <h6>
     <a href="b/board/list">b/board/list 으로 이동</a>
 </h6>
+<hr>
+<h6>
+    <a href="prop1">application.yml 에서 addr, hp 읽기</a>
+</h6>
+<h6>
+    <a href="prop2">naverCloud.properties 에서 정보 읽기</a>
+</h6>
+<hr>
+<h6>
+    <a href="form1">get 방식으로 form 데이터 각각 읽기</a>
+</h6>
+<h6>
+    <a href="form2">post 방식 (dto)로 form 데이터 읽기</a>
+</h6>
+<h6>
+    <a href="form3">post 방식 (map)로 form 데이터 읽기</a>
+</h6>
+<hr>
+<h6>
+    <a href="uploadForm">사진 업로드 폼</a>
+</h6>
+<h6>
+    <a href="multiForm">사진 여러장 업로드 폼</a>
+</h6>
+<h6>
+    <a href="ajaxUpload">ajax 로 사진 업로드</a>
+</h6>
+<h6>
+    <a href="ajaxMultiUpload">ajax 로 여러 사진 업로드</a>
+</h6>
+<hr>
+<h6>
+    <a href="practice1">연습문제 1 : ajax 로 제목과 사진 업로드</a>
+</h6>
+<h6>
+    <a href="practice2">연습문제 2 : 폼 단위 사진 추가, 삭제 기능</a>
+</h6>
 </body>
 </html>
