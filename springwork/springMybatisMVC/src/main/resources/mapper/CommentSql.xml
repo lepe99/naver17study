@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.repository.CommentRepository"><!-- namespace 는 인터페이스명과 동일하게 작성 -->
+
+    <insert id="insertComment" parameterType="Comment"> <!-- parameterType은 alias명과 동일하게 작성 -->
+        insert into bootComment (num, image, message)
+        values (#{num}, #{image}, #{message})
+    </insert>
+    <delete id="deleteComment" parameterType="int">
+        delete from bootComment
+        where idx = #{idx}
+    </delete>
+    <select id="getComment" resultType="Comment" parameterType="int">
+        select * from bootComment
+        where num = #{num}
+        order by idx desc
+    </select>
+    <update id="updateLike" parameterType="Map">
+        update bootComment
+        set likes = #{likes}
+        where idx =#{idx}
+    </update>
+</mapper>

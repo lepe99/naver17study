@@ -1,0 +1,82 @@
+body * {
+    font-family: 'Jua', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#imageList img {
+    width: 100px;
+    height: 120px;
+    object-fit: cover; /* 이미지 비율 유지 */
+    display: block; /* 이미지 수직으로 나열 */
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: 2px solid #ccc;
+}
+
+#imageList {
+    overflow: auto;
+    width: 120px;
+    height: 360px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+
+#mainImage img {
+    width: 300px;
+    height: 360px;
+    object-fit: cover;
+    border: 3px solid #ccc;
+    border-radius: 10px;
+}
+
+#entityDetail {
+    clear: both;
+    margin-top: 20px;
+}
+
+#entityDetail h6 {
+    margin-left: 20px;
+}
+
+#imageContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+#imageUpload {
+    display: none;
+}
+
+.addImage {
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.commentList {
+    margin: 10px 10px;
+}
+
+.commentImage {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+}
+
+.commentDate {
+    font-size: 0.8em;
+    color: #777;
+}
+
+.commentDel, .commentLike {
+    cursor: pointer;
+    float: right;
+}

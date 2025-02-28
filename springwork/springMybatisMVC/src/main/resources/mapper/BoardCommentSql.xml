@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.repository.BoardCommentRepository">
+
+    <insert id="insertBoardComment" parameterType="BoardComment">
+        insert into bootBoardComment (num, id, content, image)
+        values (#{num}, #{id}, #{content}, #{image})
+    </insert>
+
+    <select id="selectBoardCommentsByNum" parameterType="int" resultType="BoardComment">
+        select c.idx, c.num, c.id, m.name as writer, m.image as writerImage, c.content, c.image, c.writeDate
+        from bootMember m, bootBoardComment c
+        where m.id = c.id and c.num = #{num}
+        order by c.idx desc
+    </select>
+
+    <delete id="deleteBoardComment" parameterType="int">
+        delete from bootBoardComment where idx = #{idx}
+    </delete>
+
+    <update id="updateBoardComment" parameterType="BoardComment">
+        update bootBoardComment
+        set content = #{content}, image = #{image}
+        where idx = #{idx}
+    </update>
+
+    <select id="selectBoardCommentCount" parameterType="int" resultType="int">
+        select count(*) from bootBoardComment where num = #{num}
+    </select>
+
+</mapper>

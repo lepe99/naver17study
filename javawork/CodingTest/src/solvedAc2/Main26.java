@@ -19,7 +19,6 @@ public class Main26 {
 		
 		// 1. n보다 작은 소수 구하기 (에라토스테네스의 체)
 		List<Integer> decimalList = getPrimes(n);
-		System.out.println(decimalList);
 		
 		// 2. 투포인터 활용
 		int left = 0;

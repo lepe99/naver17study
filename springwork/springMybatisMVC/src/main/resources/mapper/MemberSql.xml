@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.repository.MemberRepository"><!-- namespace 는 인터페이스명과 동일하게 작성 -->
+
+    <select id="checkId" resultType="int" parameterType="String">
+        select count(*) from bootMember where id = #{id}
+    </select>
+
+    <insert id="insertMember" parameterType="Member">
+        insert into bootMember(name, passwd, id, hp, address, image)
+        values(#{name}, #{passwd}, #{id}, #{hp}, #{address}, #{image})
+    </insert>
+
+    <select id="getAllMembers" resultType="Member">
+        select * from bootMember order by num
+    </select>
+
+    <delete id="deleteMember" parameterType="int">
+        delete from bootMember where num = #{num}
+    </delete>
+
+    <delete id="deleteMembers" parameterType="List">
+        delete from bootMember where num in
+        <foreach collection="nums" item="num" open="(" separator="," close=")">
+            #{num}
+        </foreach>
+    </delete>
+
+    <!-- id와 passwd를 문자열로 각각 받아옴 파라미터로 -->
+    <select id="loginCheck" resultType="int" parameterType="Map">
+        select count(*) from bootMember where id = #{id} and passwd = #{passwd}
+    </select>
+
+    <select id="getMemberByNum" resultType="Member" parameterType="int">
+        select * from bootMember where num = #{num}
+    </select>
+
+    <select id="getMemberById" resultType="Member" parameterType="String">
+        select * from bootMember where id = #{id}
+    </select>
+
+    <update id="updateImage" parameterType="Member">
+        update bootMember set image = #{image} where num = #{num}
+    </update>
+
+    <update id="updateMember" parameterType="Member">
+        update bootMember set name = #{name}, passwd = #{passwd}, hp = #{hp}, address = #{address} where num = #{num}
+    </update>
+</mapper>

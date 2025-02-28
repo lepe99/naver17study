@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.repository.ShopRepository"><!-- namespace 는 인터페이스명과 동일하게 작성 -->
+    <!-- sql -> repository -> service -> controller 순으로 작성 -->
+    <select id="getTotalCount" resultType="int"><!-- id는 메소드명과 동일하게 작성 -->
+        select count(*) from bootShop
+    </select>
+
+    <insert id="insertShop" parameterType="Shop"> <!-- parameterType은 alias명과 동일하게 작성 -->
+        insert into bootShop (name, color, price, qty, image, arrivalDate, regDate)
+        values (#{name}, #{color}, #{price}, #{qty}, #{image}, #{arrivalDate}, now())
+    </insert>
+
+    <select id="getAllEntities" resultType="Shop">
+        select * from bootShop
+        order by num
+    </select>
+
+    <select id="getEntity" resultType="Shop" parameterType="int">
+        select * from bootShop
+        where num = #{num}
+    </select>
+
+    <update id="updateShop" parameterType="Shop">
+        update bootShop
+        set name = #{name}, color = #{color}, price = #{price}, qty = #{qty}, image = #{image}, arrivalDate = #{arrivalDate}
+        where num = #{num}
+    </update>
+
+    <delete id="deleteShop" parameterType="int">
+        delete from bootShop
+        where num = #{num}
+    </delete>
+
+</mapper>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.repository.BoardRepository">
+
+    <select id="getTotalCount" resultType="int">
+        select count(*) from bootBoard
+    </select>
+
+    <select id="getMaxIdx" resultType="int">
+        select ifnull(max(idx), 0) from bootBoard
+    </select>
+
+    <update id="updateRestep" parameterType="Map">
+        update bootBoard set restep = restep + 1 where regroup = #{regroup} and restep > #{restep}
+    </update>
+
+    <insert id="insertBoard" parameterType="Board">
+        insert into bootBoard (id, writer, subject, content, regroup, relevel, restep)
+        values (#{id}, #{writer}, #{subject}, #{content}, #{regroup}, #{relevel}, #{restep})
+
+        <selectKey keyProperty="idx" order="AFTER" resultType="int">
+            select last_insert_id()
+        </selectKey>
+    </insert>
+
+    <select id="selectPaginatedBoards" parameterType="Map" resultType="Board">
+        select * from bootBoard
+        order by regroup desc, restep asc
+        limit #{start}, #{pageSize}
+    </select>
+
+    <update id="updateReadCount" parameterType="int">
+        update bootBoard set readCount = readCount + 1 where idx = #{idx}
+    </update>
+
+    <select id="selectBoardByIdx" parameterType="int" resultType="Board">
+        select * from bootBoard where idx = #{idx}
+    </select>
+
+    <select id="selectBoardsById" parameterType="String" resultType="Board">
+        select * from bootBoard where id = #{id}
+    </select>
+    
+    <update id="updateBoard" parameterType="Board">
+        update bootBoard set subject = #{subject}, content = #{content} where idx = #{idx}
+    </update>
+
+    <delete id="deleteBoard" parameterType="int">
+        delete from bootBoard where idx = #{idx}
+    </delete>
+</mapper>
